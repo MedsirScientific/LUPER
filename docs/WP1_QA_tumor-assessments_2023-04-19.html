@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Daniel Alcala" />
+
+<meta name="date" content="2023-04-26" />
+
+<title>LUPER | QA of tumor assessments prior to ESMO 2023</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">LUPER</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">LUPER | QA of tumor assessments prior to
+ESMO 2023</h1>
+<h4 class="author">Daniel Alcala</h4>
+<h4 class="date">2023-04-26</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2023-04-26
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>LUPER/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20230419code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20230419)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20230419code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20230419)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong73507ad">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong> 73507ad
+</a>
+</p>
+</div>
+<div id="strongRepositoryversionstrong73507ad"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version 73507ad.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/.DS_Store
+    Ignored:    data/LUPER_Adverse Events_2023_04_19.xlsx
+    Ignored:    data/LUPER_Concomitant Medication_2023_04_19.xlsx
+    Ignored:    data/LUPER_Cycles_2023_04_19.xlsx
+    Ignored:    data/LUPER_End of Study_2023_04_19.xlsx
+    Ignored:    data/LUPER_EoT - Safety FUP_2023_04_19.xlsx
+    Ignored:    data/LUPER_Follow Up_2023_04_19.xlsx
+    Ignored:    data/LUPER_ICF Screening_2023_04_19.xlsx
+    Ignored:    data/LUPER_Laboratory_tests_2023_04_19.xlsx
+    Ignored:    data/LUPER_Pharmacogenomics_2023_04_19.xlsx
+    Ignored:    data/LUPER_Post-study Treatment_2023_04_19.xlsx
+    Ignored:    data/LUPER_Tumor Assessment_2023_04_19.xlsx
+    Ignored:    data/LUPER_Unscheduled visits_2023_04_19.xlsx
+    Ignored:    data/LUPER_report_Tumor_Assessment_2023_04_19.xlsx
+
+Untracked files:
+    Untracked:  analysis/output/
+    Untracked:  output/LUPER_ORR_RECIST_2023-04-19.xlsx
+    Untracked:  output/LUPER_ORR_waterfall_2023-04-19.png
+    Untracked:  output/LUPER_waterfall_ORR_RECIST_2023-04-19.xlsx
+    Untracked:  output/swimmer-spider-plot/
+
+Unstaged changes:
+    Modified:   .gitignore
+    Modified:   README.md
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown
+(<code>analysis/WP1_QA_tumor-assessments_2023-04-19.Rmd</code>) and HTML
+(<code>docs/WP1_QA_tumor-assessments_2023-04-19.html</code>) files. If
+you’ve configured a remote Git repository (see
+<code>?wflow_git_remote</code>), click on the hyperlinks in the table
+below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+73507ad
+</td>
+<td>
+MedsirScientific
+</td>
+<td>
+2023-04-26
+</td>
+<td>
+wflow_publish("analysis/WP1_QA_tumor-assessments_2023-04-19.Rmd")
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<p>This report presents the cleaning of tumour assessment data from the
+LUPER study. The ultimate goal is to obtain the number of patients who
+have experienced radiologically confirmed disease progression. However,
+the purpose of this preliminary analysis of radiological progressions is
+to detect anomalies or discrepancies in the tumour assessment data
+collected.</p>
+<p>Raw data from the eCRF was downloaded as of 2023-04-19 to perform
+these analyses.</p>
+<div id="patient-ids-itt-population" class="section level1">
+<h1>Patient IDs (ITT population)</h1>
+<p>First, we will obtain a list with the identifying codes of the
+patients included in the Intention-to-Treat (ITT) population.</p>
+<p>We will use the medication intake sheet (Cycles) to obtain the list
+of patients included in the ITT:</p>
+<pre class="r"><code>data_00_patient_ids &lt;- read_excel(
+  here(&quot;data/LUPER_Cycles_2023_04_19.xlsx&quot;),
+    sheet = &quot;Cycles&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;% 
+  # Extract data only from patients who took the study medication on C1D1.
+  filter(
+    event_num == 1,
+  pembrolizumab_administered == &quot;Yes&quot;
+    ) %&gt;%
+  select(patient)
+
+rmarkdown::paged_table(data_00_patient_ids)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"0101-001"},{"1":"0101-003"},{"1":"0101-004"},{"1":"0101-006"},{"1":"0101-008"},{"1":"0101-009"},{"1":"0101-012"},{"1":"0101-013"},{"1":"0101-014"},{"1":"0101-015"},{"1":"0102-001"},{"1":"0102-002"},{"1":"0102-003"},{"1":"0102-004"},{"1":"0103-001"},{"1":"0103-002"},{"1":"0103-003"},{"1":"0103-004"},{"1":"0103-006"},{"1":"0103-008"},{"1":"0104-002"},{"1":"0104-003"},{"1":"0104-004"},{"1":"0104-006"},{"1":"0104-007"},{"1":"0109-001"},{"1":"0109-004"},{"1":"0109-005"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="measurable-lesions-at-baseline" class="section level1">
+<h1>Measurable lesions at baseline</h1>
+<p>Data from tumour assessments need to be pulled from two different
+sources. On the one hand, we have the baseline tumour assessment
+included in the Screening sheet. On the other hand, we have the tumour
+assessment sheet itself, which collects all post-baseline
+assessments.</p>
+<p>In addition, not all patients had measurable lesions at baseline.
+Therefore, we need to collect data for both types of lesions. First, we
+extracted data from patients with measurable lesions at baseline:</p>
+<pre class="r"><code>data_01a_baseline_target &lt;- read_excel(
+    here(&quot;data/LUPER_ICF Screening_2023_04_19.xlsx&quot;),
+    sheet = &quot;TARGET&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;% 
+    # The variable &quot;event_num&quot; encodes the tumour assessment number in the post-baseline assessments.
+    # Create this variable and assign a 0 to mark this as the baseline assessment.
+    mutate(
+      event_num = 0
+    ) %&gt;%
+    group_by(patient, event_num) %&gt;%
+    # We collect the length of the longest diameter of each reported target (i.e., measurable) lesion individually.
+    # Calculate the sum of longest diameter of all lesions.
+    mutate(
+      sum_of_lesions = sum(longest_diameter_short_axis_mm)
+    ) %&gt;%
+    # Since we now have the sum of longest diameters repeated as many times as there are measurable lesions, we can keep either any row
+    group_by(patient) %&gt;%
+    filter(row_number() == 1) %&gt;%
+    mutate(
+      evaluation_date = dmy(evaluation_date)
+    ) %&gt;% 
+    # Create a dummy variable to code that the patient had measurable disease at baseline.
+    mutate(
+      baseline_target = 0
+    ) %&gt;% 
+    select(
+        patient, event_num, baseline_target, evaluation_date, longest_diameter_short_axis_mm, sum_of_lesions
+        )
+
+data_01a_baseline_target &lt;- merge(
+  data_00_patient_ids,
+  data_01a_baseline_target,
+  by = &quot;patient&quot;,
+  all = FALSE
+)
+
+rmarkdown::paged_table(data_01a_baseline_target)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["baseline_target"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[4],"type":["date"],"align":["right"]},{"label":["longest_diameter_short_axis_mm"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sum_of_lesions"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"0101-001","2":"0","3":"0","4":"2020-10-17","5":"27.50","6":"27.50"},{"1":"0101-003","2":"0","3":"0","4":"2021-01-23","5":"15.20","6":"15.20"},{"1":"0101-004","2":"0","3":"0","4":"2021-02-27","5":"18.50","6":"18.50"},{"1":"0101-006","2":"0","3":"0","4":"2021-07-31","5":"86.90","6":"198.50"},{"1":"0101-008","2":"0","3":"0","4":"2021-10-23","5":"17.60","6":"40.30"},{"1":"0101-009","2":"0","3":"0","4":"2022-01-15","5":"45.50","6":"78.90"},{"1":"0101-012","2":"0","3":"0","4":"2022-07-12","5":"12.80","6":"52.20"},{"1":"0101-013","2":"0","3":"0","4":"2022-08-10","5":"50.20","6":"82.50"},{"1":"0101-014","2":"0","3":"0","4":"2022-08-27","5":"43.90","6":"43.90"},{"1":"0101-015","2":"0","3":"0","4":"2022-12-17","5":"57.80","6":"108.70"},{"1":"0102-001","2":"0","3":"0","4":"2020-09-16","5":"18.00","6":"94.00"},{"1":"0102-002","2":"0","3":"0","4":"2021-06-02","5":"31.00","6":"79.00"},{"1":"0102-003","2":"0","3":"0","4":"2021-10-20","5":"15.00","6":"15.00"},{"1":"0102-004","2":"0","3":"0","4":"2022-01-12","5":"50.00","6":"50.00"},{"1":"0103-001","2":"0","3":"0","4":"2020-09-07","5":"31.46","6":"61.20"},{"1":"0103-002","2":"0","3":"0","4":"2020-10-07","5":"15.51","6":"73.45"},{"1":"0103-003","2":"0","3":"0","4":"2021-02-03","5":"24.29","6":"43.02"},{"1":"0103-004","2":"0","3":"0","4":"2021-04-21","5":"35.49","6":"35.49"},{"1":"0103-006","2":"0","3":"0","4":"2021-05-26","5":"18.22","6":"40.09"},{"1":"0103-008","2":"0","3":"0","4":"2022-02-03","5":"64.00","6":"199.00"},{"1":"0104-002","2":"0","3":"0","4":"2022-11-02","5":"54.00","6":"110.00"},{"1":"0104-003","2":"0","3":"0","4":"2022-10-28","5":"17.00","6":"17.00"},{"1":"0104-004","2":"0","3":"0","4":"2022-12-21","5":"100.00","6":"155.00"},{"1":"0104-006","2":"0","3":"0","4":"2023-01-31","5":"31.00","6":"57.00"},{"1":"0104-007","2":"0","3":"0","4":"2023-02-14","5":"11.00","6":"59.00"},{"1":"0109-001","2":"0","3":"0","4":"2022-07-28","5":"16.00","6":"54.00"},{"1":"0109-004","2":"0","3":"0","4":"2022-10-26","5":"61.00","6":"83.00"},{"1":"0109-005","2":"0","3":"0","4":"2023-01-25","5":"15.00","6":"55.00"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="non-measurable-lesions-at-baseline" class="section level1">
+<h1>Non-measurable lesions at baseline</h1>
+<p>We then extract data from patients who had non-measurable lesions at
+baseline:</p>
+<pre class="r"><code>data_01b_baseline_nontarget &lt;- read_excel(
+    here(&quot;data/LUPER_ICF Screening_2023_04_19.xlsx&quot;),
+    sheet = &quot;NON_TARGET&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;% 
+    # The variable &quot;event_num&quot; encodes the tumour assessment number in the post-baseline assessments.
+    # Create this variable and assign a 0 to mark this as the baseline assessment.
+    mutate(
+      event_num = 0
+    ) %&gt;%
+    # Since we only care about the number of patients with non-measurable disease at baseline, we can keep either any row
+    group_by(patient) %&gt;%
+    filter(row_number() == 1) %&gt;%
+    mutate(
+      evaluation_date = dmy(evaluation_date)
+    ) %&gt;% 
+    filter(
+      non_target_lesion == &quot;Yes&quot;
+    ) %&gt;% 
+    select(
+      patient, event_num, evaluation_date
+    )
+
+data_01b_baseline_nontarget &lt;- merge(
+  data_00_patient_ids,
+  data_01b_baseline_nontarget,
+  by = &quot;patient&quot;,
+  all = FALSE
+)
+
+rmarkdown::paged_table(data_01b_baseline_nontarget)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]}],"data":[{"1":"0101-001","2":"0","3":"2020-10-17"},{"1":"0101-003","2":"0","3":"2021-01-23"},{"1":"0101-006","2":"0","3":"2021-07-31"},{"1":"0101-008","2":"0","3":"2021-10-23"},{"1":"0101-009","2":"0","3":"2022-01-15"},{"1":"0101-012","2":"0","3":"2022-07-12"},{"1":"0101-013","2":"0","3":"2022-08-10"},{"1":"0101-014","2":"0","3":"2022-08-27"},{"1":"0101-015","2":"0","3":"2022-12-17"},{"1":"0102-001","2":"0","3":"2020-09-16"},{"1":"0102-002","2":"0","3":"2021-06-02"},{"1":"0102-003","2":"0","3":"2021-10-20"},{"1":"0102-004","2":"0","3":"2022-01-12"},{"1":"0103-001","2":"0","3":"2020-09-07"},{"1":"0103-003","2":"0","3":"2021-02-03"},{"1":"0103-004","2":"0","3":"2021-04-22"},{"1":"0103-006","2":"0","3":"2021-05-26"},{"1":"0103-008","2":"0","3":"2022-02-11"},{"1":"0104-002","2":"0","3":"2022-11-02"},{"1":"0104-003","2":"0","3":"2022-10-28"},{"1":"0104-004","2":"0","3":"2022-12-21"},{"1":"0104-006","2":"0","3":"2023-01-31"},{"1":"0104-007","2":"0","3":"2023-02-14"},{"1":"0109-001","2":"0","3":"2022-07-28"},{"1":"0109-004","2":"0","3":"2022-10-26"},{"1":"0109-005","2":"0","3":"2023-01-25"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="baseline-tumour-assessment" class="section level1">
+<h1>Baseline tumour assessment</h1>
+<p>Finally, we merge both datasets to generate a single list that states
+for each patient whether they had measurable lesions or non-measurable
+lesions only at baseline:</p>
+<pre class="r"><code>data_01_baseline_all &lt;- full_join(
+  data_01a_baseline_target,
+  data_01b_baseline_nontarget,
+  by = c(&quot;patient&quot;, &quot;event_num&quot;)
+  ) %&gt;%
+  # If a patient had measurable lesions at baseline, we want to keep that data.
+  # Only if there were no measurable lesions, we want to keep the tumour assessment date when the non-measurable lesions were detected.
+  mutate(
+    evaluation_date = if_else(
+      is.na(evaluation_date.x), evaluation_date.y, evaluation_date.x
+    )
+  ) %&gt;%
+  # The following mutate() function creates a &quot;baseline_nontarget&quot; variable that codes 0 if the patient had no measurable lesions at baseline.
+  mutate(
+    baseline_nontarget = if_else(is.na(baseline_target) == 0, 1, 0),
+    baseline_nontarget = na_if(baseline_nontarget, 1)
+  ) %&gt;% 
+  select(
+    patient, event_num, evaluation_date, baseline_target, sum_of_lesions, baseline_nontarget
+  )
+
+rmarkdown::paged_table(data_01_baseline_all)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]},{"label":["baseline_target"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sum_of_lesions"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["baseline_nontarget"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"0101-001","2":"0","3":"2020-10-17","4":"0","5":"27.50","6":"NA"},{"1":"0101-003","2":"0","3":"2021-01-23","4":"0","5":"15.20","6":"NA"},{"1":"0101-004","2":"0","3":"2021-02-27","4":"0","5":"18.50","6":"NA"},{"1":"0101-006","2":"0","3":"2021-07-31","4":"0","5":"198.50","6":"NA"},{"1":"0101-008","2":"0","3":"2021-10-23","4":"0","5":"40.30","6":"NA"},{"1":"0101-009","2":"0","3":"2022-01-15","4":"0","5":"78.90","6":"NA"},{"1":"0101-012","2":"0","3":"2022-07-12","4":"0","5":"52.20","6":"NA"},{"1":"0101-013","2":"0","3":"2022-08-10","4":"0","5":"82.50","6":"NA"},{"1":"0101-014","2":"0","3":"2022-08-27","4":"0","5":"43.90","6":"NA"},{"1":"0101-015","2":"0","3":"2022-12-17","4":"0","5":"108.70","6":"NA"},{"1":"0102-001","2":"0","3":"2020-09-16","4":"0","5":"94.00","6":"NA"},{"1":"0102-002","2":"0","3":"2021-06-02","4":"0","5":"79.00","6":"NA"},{"1":"0102-003","2":"0","3":"2021-10-20","4":"0","5":"15.00","6":"NA"},{"1":"0102-004","2":"0","3":"2022-01-12","4":"0","5":"50.00","6":"NA"},{"1":"0103-001","2":"0","3":"2020-09-07","4":"0","5":"61.20","6":"NA"},{"1":"0103-002","2":"0","3":"2020-10-07","4":"0","5":"73.45","6":"NA"},{"1":"0103-003","2":"0","3":"2021-02-03","4":"0","5":"43.02","6":"NA"},{"1":"0103-004","2":"0","3":"2021-04-21","4":"0","5":"35.49","6":"NA"},{"1":"0103-006","2":"0","3":"2021-05-26","4":"0","5":"40.09","6":"NA"},{"1":"0103-008","2":"0","3":"2022-02-03","4":"0","5":"199.00","6":"NA"},{"1":"0104-002","2":"0","3":"2022-11-02","4":"0","5":"110.00","6":"NA"},{"1":"0104-003","2":"0","3":"2022-10-28","4":"0","5":"17.00","6":"NA"},{"1":"0104-004","2":"0","3":"2022-12-21","4":"0","5":"155.00","6":"NA"},{"1":"0104-006","2":"0","3":"2023-01-31","4":"0","5":"57.00","6":"NA"},{"1":"0104-007","2":"0","3":"2023-02-14","4":"0","5":"59.00","6":"NA"},{"1":"0109-001","2":"0","3":"2022-07-28","4":"0","5":"54.00","6":"NA"},{"1":"0109-004","2":"0","3":"2022-10-26","4":"0","5":"83.00","6":"NA"},{"1":"0109-005","2":"0","3":"2023-01-25","4":"0","5":"55.00","6":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="measurable-lesions-post-baseline" class="section level1">
+<h1>Measurable lesions post-baseline</h1>
+<p>Next, we extract the results of the post-baseline tumour
+assessments:</p>
+<pre class="r"><code>data_02a_postbaseline_target &lt;- read_excel(
+    here(&quot;data/LUPER_Tumor Assessment_2023_04_19.xlsx&quot;),
+    sheet = &quot;TARGET&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;%
+    # We collect the length of the longest diameter of each reported target (i.e., measurable) lesion individually.
+    # Calculate the sum of longest diameter of all lesions for each tumour assessment.
+    group_by(patient, event_num) %&gt;%
+    mutate(
+      sum_of_lesions = sum(longest_diameter_short_axis_mm)
+    ) %&gt;%
+    # Since we now have the sum of longest diameters repeated as many times as there are measurable lesions, we can keep either any row
+    group_by(patient, event_num) %&gt;%
+    filter(row_number() == 1) %&gt;%
+    mutate(
+      evaluation_date = dmy(evaluation_date)
+    ) %&gt;% 
+    select(
+      patient, event_num, evaluation_date, sum_of_lesions
+    )
+
+rmarkdown::paged_table(data_02a_postbaseline_target)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]},{"label":["sum_of_lesions"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0101-001","2":"1","3":"2020-12-19","4":"NA"},{"1":"0101-001","2":"2","3":"2021-01-16","4":"24.00"},{"1":"0101-001","2":"3","3":"2021-02-13","4":"52.00"},{"1":"0101-003","2":"1","3":"2021-03-13","4":"12.00"},{"1":"0101-003","2":"2","3":"2021-04-24","4":"7.00"},{"1":"0101-003","2":"3","3":"2021-06-05","4":"5.00"},{"1":"0101-003","2":"4","3":"2021-07-24","4":"5.00"},{"1":"0101-003","2":"5","3":"2021-09-06","4":"5.00"},{"1":"0101-003","2":"6","3":"2021-10-27","4":"5.00"},{"1":"0101-003","2":"7","3":"2021-12-11","4":"5.00"},{"1":"0101-003","2":"8","3":"2022-01-24","4":"5.00"},{"1":"0101-003","2":"9","3":"2022-02-26","4":"5.00"},{"1":"0101-003","2":"10","3":"2022-04-06","4":"5.00"},{"1":"0101-003","2":"11","3":"2022-07-01","4":"5.00"},{"1":"0101-003","2":"12","3":"2022-08-16","4":"5.00"},{"1":"0101-003","2":"13","3":"2022-10-02","4":"5.00"},{"1":"0101-003","2":"14","3":"2022-11-17","4":"5.00"},{"1":"0101-003","2":"15","3":"2022-12-20","4":"5.00"},{"1":"0101-003","2":"16","3":"2023-01-28","4":"5.00"},{"1":"0101-003","2":"17","3":"<NA>","4":"NA"},{"1":"0101-004","2":"1","3":"2021-04-17","4":"14.00"},{"1":"0101-004","2":"2","3":"2021-05-29","4":"3.60"},{"1":"0101-004","2":"3","3":"2021-07-17","4":"2.80"},{"1":"0101-004","2":"4","3":"2021-08-24","4":"0.00"},{"1":"0101-004","2":"5","3":"2021-10-19","4":"0.00"},{"1":"0101-004","2":"6","3":"2021-11-21","4":"0.00"},{"1":"0101-004","2":"7","3":"2022-01-08","4":"0.00"},{"1":"0101-004","2":"8","3":"2022-02-18","4":"0.00"},{"1":"0101-004","2":"9","3":"2022-03-21","4":"0.00"},{"1":"0101-004","2":"10","3":"2022-05-10","4":"0.00"},{"1":"0101-004","2":"11","3":"2022-06-16","4":"0.00"},{"1":"0101-008","2":"1","3":"2021-12-11","4":"21.50"},{"1":"0101-008","2":"2","3":"2022-02-05","4":"16.20"},{"1":"0101-008","2":"3","3":"2022-03-15","4":"17.00"},{"1":"0101-008","2":"4","3":"2022-05-03","4":"31.00"},{"1":"0101-008","2":"5","3":"2022-06-14","4":"54.00"},{"1":"0101-009","2":"1","3":"2022-03-12","4":"82.50"},{"1":"0101-009","2":"2","3":"2022-04-23","4":"89.50"},{"1":"0101-012","2":"1","3":"2022-09-17","4":"30.40"},{"1":"0101-012","2":"2","3":"2022-10-29","4":"24.00"},{"1":"0101-012","2":"3","3":"2022-12-10","4":"26.90"},{"1":"0101-012","2":"4","3":"2023-02-04","4":"22.90"},{"1":"0101-013","2":"1","3":"2022-09-22","4":"68.10"},{"1":"0101-013","2":"2","3":"2022-11-10","4":"54.20"},{"1":"0101-013","2":"3","3":"2022-12-19","4":"54.00"},{"1":"0101-014","2":"1","3":"2022-10-08","4":"15.70"},{"1":"0101-014","2":"2","3":"2022-11-19","4":"13.10"},{"1":"0101-014","2":"3","3":"2023-01-07","4":"12.00"},{"1":"0101-015","2":"1","3":"2023-02-04","4":"67.10"},{"1":"0101-015","2":"2","3":"2023-03-11","4":"57.40"},{"1":"0102-002","2":"1","3":"2021-07-16","4":"63.00"},{"1":"0102-002","2":"2","3":"2021-08-31","4":"69.00"},{"1":"0102-002","2":"3","3":"2021-10-14","4":"60.00"},{"1":"0102-002","2":"4","3":"2021-12-02","4":"41.00"},{"1":"0102-002","2":"5","3":"2022-01-07","4":"42.00"},{"1":"0102-003","2":"1","3":"2021-11-30","4":"15.00"},{"1":"0102-003","2":"2","3":"2022-01-14","4":"14.00"},{"1":"0102-003","2":"3","3":"2022-03-09","4":"16.00"},{"1":"0102-003","2":"4","3":"2022-04-22","4":"17.00"},{"1":"0102-003","2":"5","3":"2022-06-06","4":"18.00"},{"1":"0102-003","2":"6","3":"2022-07-18","4":"18.00"},{"1":"0102-003","2":"7","3":"2022-08-26","4":"41.00"},{"1":"0102-003","2":"8","3":"2022-10-20","4":"0.00"},{"1":"0102-003","2":"9","3":"2022-11-21","4":"0.00"},{"1":"0102-003","2":"10","3":"2023-01-02","4":"0.00"},{"1":"0102-004","2":"1","3":"2022-02-23","4":"17.00"},{"1":"0102-004","2":"2","3":"2022-04-06","4":"17.00"},{"1":"0102-004","2":"3","3":"2022-06-07","4":"0.00"},{"1":"0102-004","2":"4","3":"2022-07-20","4":"0.00"},{"1":"0102-004","2":"5","3":"2022-08-31","4":"0.00"},{"1":"0102-004","2":"6","3":"2022-10-10","4":"0.00"},{"1":"0102-004","2":"7","3":"2022-11-23","4":"0.00"},{"1":"0102-004","2":"8","3":"2022-12-27","4":"0.00"},{"1":"0102-004","2":"9","3":"2023-02-01","4":"0.00"},{"1":"0102-004","2":"10","3":"2023-03-15","4":"0.00"},{"1":"0103-001","2":"1","3":"2020-11-04","4":"77.00"},{"1":"0103-001","2":"2","3":"2020-12-12","4":"85.00"},{"1":"0103-002","2":"1","3":"2020-11-26","4":"74.76"},{"1":"0103-002","2":"2","3":"2021-01-04","4":"84.67"},{"1":"0103-002","2":"3","3":"2021-02-08","4":"84.17"},{"1":"0103-002","2":"4","3":"2021-03-22","4":"76.23"},{"1":"0103-002","2":"5","3":"2021-04-30","4":"67.81"},{"1":"0103-002","2":"6","3":"2021-06-11","4":"61.87"},{"1":"0103-002","2":"7","3":"2021-07-29","4":"56.53"},{"1":"0103-002","2":"8","3":"2021-09-09","4":"65.08"},{"1":"0103-002","2":"9","3":"2021-10-14","4":"93.58"},{"1":"0103-003","2":"1","3":"2021-03-23","4":"69.00"},{"1":"0103-003","2":"2","3":"2021-04-21","4":"101.12"},{"1":"0103-004","2":"1","3":"2021-05-28","4":"33.77"},{"1":"0103-004","2":"2","3":"2021-07-07","4":"33.08"},{"1":"0103-004","2":"3","3":"2021-08-25","4":"33.51"},{"1":"0103-004","2":"4","3":"2021-11-18","4":"46.67"},{"1":"0103-004","2":"5","3":"2021-11-18","4":"46.67"},{"1":"0103-008","2":"1","3":"2022-03-31","4":"208.95"},{"1":"0103-008","2":"2","3":"2022-05-11","4":"176.69"},{"1":"0103-008","2":"3","3":"2022-07-01","4":"129.50"},{"1":"0103-008","2":"4","3":"<NA>","4":"0.00"},{"1":"0104-002","2":"1","3":"2022-12-14","4":"45.00"},{"1":"0104-002","2":"2","3":"2023-02-01","4":"28.00"},{"1":"0104-002","2":"3","3":"2023-03-17","4":"28.00"},{"1":"0104-003","2":"1","3":"2022-12-12","4":"14.00"},{"1":"0104-003","2":"2","3":"2023-01-23","4":"14.00"},{"1":"0104-003","2":"3","3":"2023-03-03","4":"21.00"},{"1":"0104-006","2":"1","3":"2023-03-17","4":"30.00"},{"1":"0104-007","2":"1","3":"2023-03-31","4":"66.00"},{"1":"0109-001","2":"1","3":"2022-09-08","4":"58.00"},{"1":"0109-001","2":"2","3":"2022-10-24","4":"55.00"},{"1":"0109-001","2":"3","3":"2022-12-02","4":"55.00"},{"1":"0109-001","2":"4","3":"2023-01-26","4":"72.00"},{"1":"0109-004","2":"1","3":"2022-12-15","4":"26.00"},{"1":"0109-004","2":"2","3":"2023-01-26","4":"16.00"},{"1":"0109-004","2":"3","3":"2023-03-08","4":"19.00"},{"1":"0109-005","2":"1","3":"2023-03-10","4":"33.00"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="non-measurable-lesions-post-baseline" class="section level1">
+<h1>Non-measurable lesions post-baseline</h1>
+<pre class="r"><code>data_02b_postbaseline_nontarget &lt;- read_excel(
+    here(&quot;data/LUPER_Tumor Assessment_2023_04_19.xlsx&quot;),
+    sheet = &quot;NON_TARGET&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;%
+    # Since we now have the sum of longest diameters repeated as many times as there are measurable lesions, we can keep either any row
+    group_by(patient, event_num) %&gt;%
+    filter(row_number() == 1) %&gt;%
+    mutate(
+      evaluation_date = dmy(evaluation_date)
+    ) %&gt;% 
+    select(
+      patient, event_num, evaluation_date
+    )
+
+rmarkdown::paged_table(data_02b_postbaseline_nontarget)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]}],"data":[{"1":"0101-001","2":"1","3":"2020-12-19"},{"1":"0101-001","2":"2","3":"2021-01-16"},{"1":"0101-001","2":"3","3":"2021-02-13"},{"1":"0101-003","2":"1","3":"2021-03-13"},{"1":"0101-003","2":"2","3":"2021-04-24"},{"1":"0101-003","2":"3","3":"2021-06-05"},{"1":"0101-003","2":"4","3":"2021-07-24"},{"1":"0101-003","2":"5","3":"2021-09-06"},{"1":"0101-003","2":"6","3":"2021-10-27"},{"1":"0101-003","2":"7","3":"2021-12-11"},{"1":"0101-003","2":"8","3":"2022-01-24"},{"1":"0101-003","2":"9","3":"2022-02-26"},{"1":"0101-003","2":"10","3":"2022-04-06"},{"1":"0101-003","2":"11","3":"2022-07-01"},{"1":"0101-003","2":"12","3":"2022-08-16"},{"1":"0101-003","2":"13","3":"2022-10-02"},{"1":"0101-003","2":"14","3":"2022-11-17"},{"1":"0101-003","2":"15","3":"2022-12-20"},{"1":"0101-003","2":"16","3":"2023-01-28"},{"1":"0101-003","2":"17","3":"<NA>"},{"1":"0101-004","2":"11","3":"2022-06-16"},{"1":"0101-008","2":"1","3":"2021-12-11"},{"1":"0101-008","2":"2","3":"2022-02-05"},{"1":"0101-008","2":"3","3":"2022-03-15"},{"1":"0101-008","2":"4","3":"2022-05-03"},{"1":"0101-008","2":"5","3":"2022-06-14"},{"1":"0101-009","2":"1","3":"2022-03-12"},{"1":"0101-009","2":"2","3":"2022-04-23"},{"1":"0101-012","2":"1","3":"2022-09-17"},{"1":"0101-012","2":"2","3":"2022-10-29"},{"1":"0101-012","2":"3","3":"2022-12-10"},{"1":"0101-012","2":"4","3":"2023-02-04"},{"1":"0101-013","2":"1","3":"2022-09-22"},{"1":"0101-013","2":"2","3":"2022-11-10"},{"1":"0101-013","2":"3","3":"2022-12-19"},{"1":"0101-014","2":"1","3":"2022-10-08"},{"1":"0101-014","2":"2","3":"2022-11-19"},{"1":"0101-014","2":"3","3":"2023-01-07"},{"1":"0101-015","2":"1","3":"2023-02-04"},{"1":"0101-015","2":"2","3":"2023-03-11"},{"1":"0102-002","2":"1","3":"2021-07-16"},{"1":"0102-002","2":"2","3":"2021-08-31"},{"1":"0102-002","2":"3","3":"2021-10-14"},{"1":"0102-002","2":"4","3":"2021-12-02"},{"1":"0102-002","2":"5","3":"2022-01-07"},{"1":"0102-003","2":"1","3":"2021-11-30"},{"1":"0102-003","2":"2","3":"2022-01-14"},{"1":"0102-003","2":"3","3":"2022-03-09"},{"1":"0102-003","2":"4","3":"2022-04-22"},{"1":"0102-003","2":"5","3":"2022-06-06"},{"1":"0102-003","2":"6","3":"2022-07-18"},{"1":"0102-003","2":"7","3":"2022-08-26"},{"1":"0102-003","2":"8","3":"2022-10-20"},{"1":"0102-003","2":"9","3":"2022-11-21"},{"1":"0102-003","2":"10","3":"2023-01-02"},{"1":"0102-004","2":"1","3":"2022-02-23"},{"1":"0102-004","2":"2","3":"2022-04-06"},{"1":"0102-004","2":"3","3":"2022-06-07"},{"1":"0102-004","2":"4","3":"2022-07-20"},{"1":"0102-004","2":"5","3":"2022-08-31"},{"1":"0102-004","2":"6","3":"2022-10-10"},{"1":"0102-004","2":"7","3":"2022-11-23"},{"1":"0102-004","2":"8","3":"2022-12-27"},{"1":"0102-004","2":"9","3":"2023-02-01"},{"1":"0102-004","2":"10","3":"2023-03-15"},{"1":"0103-001","2":"1","3":"2020-11-04"},{"1":"0103-001","2":"2","3":"2020-12-12"},{"1":"0103-003","2":"1","3":"2021-03-23"},{"1":"0103-003","2":"2","3":"2021-04-21"},{"1":"0103-004","2":"1","3":"2021-05-28"},{"1":"0103-004","2":"2","3":"2021-07-12"},{"1":"0103-004","2":"3","3":"2021-09-09"},{"1":"0103-004","2":"4","3":"2021-11-18"},{"1":"0103-004","2":"5","3":"2021-11-16"},{"1":"0103-008","2":"1","3":"2022-04-03"},{"1":"0103-008","2":"2","3":"2022-05-16"},{"1":"0103-008","2":"3","3":"2022-06-20"},{"1":"0103-008","2":"4","3":"2022-07-27"},{"1":"0104-002","2":"1","3":"2022-12-14"},{"1":"0104-002","2":"2","3":"2023-02-01"},{"1":"0104-002","2":"3","3":"2023-03-17"},{"1":"0104-003","2":"1","3":"2022-12-12"},{"1":"0104-003","2":"2","3":"2023-01-23"},{"1":"0104-003","2":"3","3":"2023-03-03"},{"1":"0104-006","2":"1","3":"2023-03-17"},{"1":"0104-007","2":"1","3":"2023-03-31"},{"1":"0109-001","2":"1","3":"2022-09-08"},{"1":"0109-001","2":"2","3":"2022-10-24"},{"1":"0109-001","2":"3","3":"2022-12-02"},{"1":"0109-001","2":"4","3":"2023-01-26"},{"1":"0109-004","2":"1","3":"2022-12-15"},{"1":"0109-004","2":"2","3":"2023-01-26"},{"1":"0109-004","2":"3","3":"2023-03-08"},{"1":"0109-005","2":"1","3":"2023-03-10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="post-baseline-tumour-assessments" class="section level1">
+<h1>Post-baseline tumour assessments</h1>
+<pre class="r"><code>data_02_postbaseline &lt;- merge(
+  data_02a_postbaseline_target,
+  data_02b_postbaseline_nontarget,
+  by = c(&quot;patient&quot;, &quot;event_num&quot;, &quot;evaluation_date&quot;),
+  all = TRUE
+)
+
+rmarkdown::paged_table(data_02_postbaseline)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]},{"label":["sum_of_lesions"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0101-001","2":"1","3":"2020-12-19","4":"NA"},{"1":"0101-001","2":"2","3":"2021-01-16","4":"24.00"},{"1":"0101-001","2":"3","3":"2021-02-13","4":"52.00"},{"1":"0101-003","2":"1","3":"2021-03-13","4":"12.00"},{"1":"0101-003","2":"2","3":"2021-04-24","4":"7.00"},{"1":"0101-003","2":"3","3":"2021-06-05","4":"5.00"},{"1":"0101-003","2":"4","3":"2021-07-24","4":"5.00"},{"1":"0101-003","2":"5","3":"2021-09-06","4":"5.00"},{"1":"0101-003","2":"6","3":"2021-10-27","4":"5.00"},{"1":"0101-003","2":"7","3":"2021-12-11","4":"5.00"},{"1":"0101-003","2":"8","3":"2022-01-24","4":"5.00"},{"1":"0101-003","2":"9","3":"2022-02-26","4":"5.00"},{"1":"0101-003","2":"10","3":"2022-04-06","4":"5.00"},{"1":"0101-003","2":"11","3":"2022-07-01","4":"5.00"},{"1":"0101-003","2":"12","3":"2022-08-16","4":"5.00"},{"1":"0101-003","2":"13","3":"2022-10-02","4":"5.00"},{"1":"0101-003","2":"14","3":"2022-11-17","4":"5.00"},{"1":"0101-003","2":"15","3":"2022-12-20","4":"5.00"},{"1":"0101-003","2":"16","3":"2023-01-28","4":"5.00"},{"1":"0101-003","2":"17","3":"<NA>","4":"NA"},{"1":"0101-004","2":"1","3":"2021-04-17","4":"14.00"},{"1":"0101-004","2":"2","3":"2021-05-29","4":"3.60"},{"1":"0101-004","2":"3","3":"2021-07-17","4":"2.80"},{"1":"0101-004","2":"4","3":"2021-08-24","4":"0.00"},{"1":"0101-004","2":"5","3":"2021-10-19","4":"0.00"},{"1":"0101-004","2":"6","3":"2021-11-21","4":"0.00"},{"1":"0101-004","2":"7","3":"2022-01-08","4":"0.00"},{"1":"0101-004","2":"8","3":"2022-02-18","4":"0.00"},{"1":"0101-004","2":"9","3":"2022-03-21","4":"0.00"},{"1":"0101-004","2":"10","3":"2022-05-10","4":"0.00"},{"1":"0101-004","2":"11","3":"2022-06-16","4":"0.00"},{"1":"0101-008","2":"1","3":"2021-12-11","4":"21.50"},{"1":"0101-008","2":"2","3":"2022-02-05","4":"16.20"},{"1":"0101-008","2":"3","3":"2022-03-15","4":"17.00"},{"1":"0101-008","2":"4","3":"2022-05-03","4":"31.00"},{"1":"0101-008","2":"5","3":"2022-06-14","4":"54.00"},{"1":"0101-009","2":"1","3":"2022-03-12","4":"82.50"},{"1":"0101-009","2":"2","3":"2022-04-23","4":"89.50"},{"1":"0101-012","2":"1","3":"2022-09-17","4":"30.40"},{"1":"0101-012","2":"2","3":"2022-10-29","4":"24.00"},{"1":"0101-012","2":"3","3":"2022-12-10","4":"26.90"},{"1":"0101-012","2":"4","3":"2023-02-04","4":"22.90"},{"1":"0101-013","2":"1","3":"2022-09-22","4":"68.10"},{"1":"0101-013","2":"2","3":"2022-11-10","4":"54.20"},{"1":"0101-013","2":"3","3":"2022-12-19","4":"54.00"},{"1":"0101-014","2":"1","3":"2022-10-08","4":"15.70"},{"1":"0101-014","2":"2","3":"2022-11-19","4":"13.10"},{"1":"0101-014","2":"3","3":"2023-01-07","4":"12.00"},{"1":"0101-015","2":"1","3":"2023-02-04","4":"67.10"},{"1":"0101-015","2":"2","3":"2023-03-11","4":"57.40"},{"1":"0102-002","2":"1","3":"2021-07-16","4":"63.00"},{"1":"0102-002","2":"2","3":"2021-08-31","4":"69.00"},{"1":"0102-002","2":"3","3":"2021-10-14","4":"60.00"},{"1":"0102-002","2":"4","3":"2021-12-02","4":"41.00"},{"1":"0102-002","2":"5","3":"2022-01-07","4":"42.00"},{"1":"0102-003","2":"1","3":"2021-11-30","4":"15.00"},{"1":"0102-003","2":"2","3":"2022-01-14","4":"14.00"},{"1":"0102-003","2":"3","3":"2022-03-09","4":"16.00"},{"1":"0102-003","2":"4","3":"2022-04-22","4":"17.00"},{"1":"0102-003","2":"5","3":"2022-06-06","4":"18.00"},{"1":"0102-003","2":"6","3":"2022-07-18","4":"18.00"},{"1":"0102-003","2":"7","3":"2022-08-26","4":"41.00"},{"1":"0102-003","2":"8","3":"2022-10-20","4":"0.00"},{"1":"0102-003","2":"9","3":"2022-11-21","4":"0.00"},{"1":"0102-003","2":"10","3":"2023-01-02","4":"0.00"},{"1":"0102-004","2":"1","3":"2022-02-23","4":"17.00"},{"1":"0102-004","2":"2","3":"2022-04-06","4":"17.00"},{"1":"0102-004","2":"3","3":"2022-06-07","4":"0.00"},{"1":"0102-004","2":"4","3":"2022-07-20","4":"0.00"},{"1":"0102-004","2":"5","3":"2022-08-31","4":"0.00"},{"1":"0102-004","2":"6","3":"2022-10-10","4":"0.00"},{"1":"0102-004","2":"7","3":"2022-11-23","4":"0.00"},{"1":"0102-004","2":"8","3":"2022-12-27","4":"0.00"},{"1":"0102-004","2":"9","3":"2023-02-01","4":"0.00"},{"1":"0102-004","2":"10","3":"2023-03-15","4":"0.00"},{"1":"0103-001","2":"1","3":"2020-11-04","4":"77.00"},{"1":"0103-001","2":"2","3":"2020-12-12","4":"85.00"},{"1":"0103-002","2":"1","3":"2020-11-26","4":"74.76"},{"1":"0103-002","2":"2","3":"2021-01-04","4":"84.67"},{"1":"0103-002","2":"3","3":"2021-02-08","4":"84.17"},{"1":"0103-002","2":"4","3":"2021-03-22","4":"76.23"},{"1":"0103-002","2":"5","3":"2021-04-30","4":"67.81"},{"1":"0103-002","2":"6","3":"2021-06-11","4":"61.87"},{"1":"0103-002","2":"7","3":"2021-07-29","4":"56.53"},{"1":"0103-002","2":"8","3":"2021-09-09","4":"65.08"},{"1":"0103-002","2":"9","3":"2021-10-14","4":"93.58"},{"1":"0103-003","2":"1","3":"2021-03-23","4":"69.00"},{"1":"0103-003","2":"2","3":"2021-04-21","4":"101.12"},{"1":"0103-004","2":"1","3":"2021-05-28","4":"33.77"},{"1":"0103-004","2":"2","3":"2021-07-07","4":"33.08"},{"1":"0103-004","2":"2","3":"2021-07-12","4":"NA"},{"1":"0103-004","2":"3","3":"2021-08-25","4":"33.51"},{"1":"0103-004","2":"3","3":"2021-09-09","4":"NA"},{"1":"0103-004","2":"4","3":"2021-11-18","4":"46.67"},{"1":"0103-004","2":"5","3":"2021-11-16","4":"NA"},{"1":"0103-004","2":"5","3":"2021-11-18","4":"46.67"},{"1":"0103-008","2":"1","3":"2022-03-31","4":"208.95"},{"1":"0103-008","2":"1","3":"2022-04-03","4":"NA"},{"1":"0103-008","2":"2","3":"2022-05-11","4":"176.69"},{"1":"0103-008","2":"2","3":"2022-05-16","4":"NA"},{"1":"0103-008","2":"3","3":"2022-06-20","4":"NA"},{"1":"0103-008","2":"3","3":"2022-07-01","4":"129.50"},{"1":"0103-008","2":"4","3":"2022-07-27","4":"NA"},{"1":"0103-008","2":"4","3":"<NA>","4":"0.00"},{"1":"0104-002","2":"1","3":"2022-12-14","4":"45.00"},{"1":"0104-002","2":"2","3":"2023-02-01","4":"28.00"},{"1":"0104-002","2":"3","3":"2023-03-17","4":"28.00"},{"1":"0104-003","2":"1","3":"2022-12-12","4":"14.00"},{"1":"0104-003","2":"2","3":"2023-01-23","4":"14.00"},{"1":"0104-003","2":"3","3":"2023-03-03","4":"21.00"},{"1":"0104-006","2":"1","3":"2023-03-17","4":"30.00"},{"1":"0104-007","2":"1","3":"2023-03-31","4":"66.00"},{"1":"0109-001","2":"1","3":"2022-09-08","4":"58.00"},{"1":"0109-001","2":"2","3":"2022-10-24","4":"55.00"},{"1":"0109-001","2":"3","3":"2022-12-02","4":"55.00"},{"1":"0109-001","2":"4","3":"2023-01-26","4":"72.00"},{"1":"0109-004","2":"1","3":"2022-12-15","4":"26.00"},{"1":"0109-004","2":"2","3":"2023-01-26","4":"16.00"},{"1":"0109-004","2":"3","3":"2023-03-08","4":"19.00"},{"1":"0109-005","2":"1","3":"2023-03-10","4":"33.00"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="new-lesions-detected-in-post-baseline-tumour-assessments"
+class="section level1">
+<h1>New lesions detected in post-baseline tumour assessments</h1>
+<p>For a complete account of the data, we need to extract also the
+occurrence of new lesions from another sheet of the file with the
+post-baseline tumour assessments:</p>
+<pre class="r"><code>data_03_new_lesions &lt;- read_excel(
+    here(&quot;data/LUPER_Tumor Assessment_2023_04_19.xlsx&quot;),
+    sheet = &quot;NEW_LESIONS&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;% 
+    # Create a new variable that encodes whether the patient had a new lesion at any tumour assessment
+    mutate(
+      new_lesions = &quot;Yes&quot;
+    ) %&gt;% 
+    mutate(
+      evaluation_date = dmy(evaluation_date)
+    ) %&gt;% 
+    # Since the presentation of a single new lesion already implies disease progression, we only keep the record of one new lesion, regardless of which one.
+    group_by(patient) %&gt;%
+    filter(row_number() == 1) %&gt;% 
+    select(
+      patient, event_num, evaluation_date, new_lesions
+    )
+
+rmarkdown::paged_table(data_03_new_lesions)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]},{"label":["new_lesions"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"0101-001","2":"2","3":"2021-01-16","4":"Yes"},{"1":"0101-004","2":"10","3":"2022-05-10","4":"Yes"},{"1":"0101-009","2":"2","3":"2022-04-23","4":"Yes"},{"1":"0102-003","2":"8","3":"<NA>","4":"Yes"},{"1":"0103-002","2":"9","3":"2021-10-14","4":"Yes"},{"1":"0104-003","2":"3","3":"2023-03-03","4":"Yes"},{"1":"0109-001","2":"2","3":"2022-10-24","4":"Yes"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div
+id="overall-response-in-post-baseline-tumour-assessments-by-recist-v.1.1."
+class="section level1">
+<h1>Overall Response in post-baseline tumour assessments by RECIST
+v.1.1.</h1>
+<p>We want to incorporate the overall response according to RECIST v.1.1
+in each tumour assessment into the final dataset:</p>
+<pre class="r"><code>data_04a_recist &lt;- read_excel(
+    here(&quot;data/LUPER_Tumor Assessment_2023_04_19.xlsx&quot;),
+    sheet = &quot;Tumor Assessment&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;% 
+    select(
+      patient, event_num, target_lesions_response, non_target_lesions_response, overall_response
+      )
+
+rmarkdown::paged_table(data_04a_recist)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["target_lesions_response"],"name":[3],"type":["chr"],"align":["left"]},{"label":["non_target_lesions_response"],"name":[4],"type":["chr"],"align":["left"]},{"label":["overall_response"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"0101-001","2":"1","3":"Indeterminate","4":"Complete Response (CR)","5":"Indeterminate"},{"1":"0101-001","2":"2","3":"Progressive Disease (PD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)"},{"1":"0101-001","2":"3","3":"NA","4":"NA","5":"NA"},{"1":"0101-003","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0101-003","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"4","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"5","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"6","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"7","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"8","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"9","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"10","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"11","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"12","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"13","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"14","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"15","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"16","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-003","2":"17","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-004","2":"1","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0101-004","2":"2","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"3","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"4","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"5","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"6","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"7","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"8","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"9","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)"},{"1":"0101-004","2":"10","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Progressive Disease (PD)"},{"1":"0101-004","2":"11","3":"NA","4":"NA","5":"NA"},{"1":"0101-008","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-008","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-008","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-008","2":"4","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)"},{"1":"0101-008","2":"5","3":"NA","4":"NA","5":"NA"},{"1":"0101-009","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0101-009","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)"},{"1":"0101-012","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-012","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-012","2":"3","3":"Partial Response (PR)","4":"Indeterminate","5":"Partial Response (PR)"},{"1":"0101-012","2":"4","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-013","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0101-013","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-013","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-014","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-014","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-014","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-015","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0101-015","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0102-002","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-002","2":"2","3":"Stable Disease (SD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)"},{"1":"0102-002","2":"3","3":"NA","4":"NA","5":"NA"},{"1":"0102-002","2":"4","3":"NA","4":"NA","5":"NA"},{"1":"0102-002","2":"5","3":"NA","4":"NA","5":"NA"},{"1":"0102-003","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-003","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-003","2":"3","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-003","2":"4","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-003","2":"5","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-003","2":"6","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0102-003","2":"7","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)"},{"1":"0102-003","2":"8","3":"NA","4":"NA","5":"NA"},{"1":"0102-003","2":"9","3":"NA","4":"NA","5":"NA"},{"1":"0102-003","2":"10","3":"NA","4":"NA","5":"NA"},{"1":"0102-004","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0102-004","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0102-004","2":"3","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"4","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"5","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"6","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"7","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"8","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"9","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0102-004","2":"10","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)"},{"1":"0103-001","2":"1","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)"},{"1":"0103-001","2":"2","3":"NA","4":"NA","5":"NA"},{"1":"0103-002","2":"1","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"2","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"3","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"4","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"5","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"6","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"7","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)"},{"1":"0103-002","2":"8","3":"Partial Response (PR)","4":"No non-target lesions at baseline","5":"Partial Response (PR)"},{"1":"0103-002","2":"9","3":"Progressive Disease (PD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)"},{"1":"0103-003","2":"1","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)"},{"1":"0103-003","2":"2","3":"NA","4":"NA","5":"NA"},{"1":"0103-004","2":"1","3":"Stable Disease (SD)","4":"Complete Response (CR)","5":"Stable Disease (SD)"},{"1":"0103-004","2":"2","3":"Stable Disease (SD)","4":"Complete Response (CR)","5":"Stable Disease (SD)"},{"1":"0103-004","2":"3","3":"Stable Disease (SD)","4":"Complete Response (CR)","5":"Stable Disease (SD)"},{"1":"0103-004","2":"4","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)"},{"1":"0103-004","2":"5","3":"NA","4":"NA","5":"NA"},{"1":"0103-008","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0103-008","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0103-008","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0103-008","2":"4","3":"Indeterminate","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)"},{"1":"0104-002","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0104-002","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0104-002","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0104-003","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0104-003","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0104-003","2":"3","3":"Progressive Disease (PD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)"},{"1":"0104-006","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0104-007","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0109-001","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)"},{"1":"0109-001","2":"2","3":"Stable Disease (SD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)"},{"1":"0109-001","2":"3","3":"NA","4":"NA","5":"NA"},{"1":"0109-001","2":"4","3":"NA","4":"NA","5":"NA"},{"1":"0109-004","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0109-004","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0109-004","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"},{"1":"0109-005","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div
+id="overall-response-in-post-baseline-tumour-assessments-by-immune-irecist."
+class="section level1">
+<h1>Overall Response in post-baseline tumour assessments by (immune)
+iRECIST.</h1>
+<p>Since the study treatment includes immunotherapy, we also need to
+take into account the assessment by (immune) iRECIST:</p>
+<pre class="r"><code>data_04b_irecist &lt;- read_excel(
+    here(&quot;data/LUPER_Tumor Assessment_2023_04_19.xlsx&quot;),
+    sheet = &quot;Tumor Assessment&quot;,
+    skip = 1) %&gt;% 
+    clean_names() %&gt;% 
+    select(
+      patient, event_num, target_lesions_response, non_target_lesions_response, overall_response,
+      is_the_patient_clinically_stable_and_will_benefit_from_continued_treatment, i_target_lesions_response,
+      i_non_target_lesions_response, i_overall_response, does_the_patient_continue_to_be_clinically_stable
+      )
+
+rmarkdown::paged_table(data_04b_irecist)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["target_lesions_response"],"name":[3],"type":["chr"],"align":["left"]},{"label":["non_target_lesions_response"],"name":[4],"type":["chr"],"align":["left"]},{"label":["overall_response"],"name":[5],"type":["chr"],"align":["left"]},{"label":["is_the_patient_clinically_stable_and_will_benefit_from_continued_treatment"],"name":[6],"type":["chr"],"align":["left"]},{"label":["i_target_lesions_response"],"name":[7],"type":["chr"],"align":["left"]},{"label":["i_non_target_lesions_response"],"name":[8],"type":["chr"],"align":["left"]},{"label":["i_overall_response"],"name":[9],"type":["chr"],"align":["left"]},{"label":["does_the_patient_continue_to_be_clinically_stable"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"0101-001","2":"1","3":"Indeterminate","4":"Complete Response (CR)","5":"Indeterminate","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-001","2":"2","3":"Progressive Disease (PD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)","6":"No","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-001","2":"3","3":"NA","4":"NA","5":"NA","6":"NA","7":"Confirmed Progressive Disease (iCPD)","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"No"},{"1":"0101-003","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"4","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"5","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"6","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"7","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"8","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"9","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"10","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"11","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"12","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"13","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"14","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"15","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"16","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-003","2":"17","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"1","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"2","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"3","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"4","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"5","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"6","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"7","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"8","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"9","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"10","3":"Complete Response (CR)","4":"No non-target lesions at baseline","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-004","2":"11","3":"NA","4":"NA","5":"NA","6":"NA","7":"Complete Response (iCR)","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0101-008","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-008","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-008","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-008","2":"4","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-008","2":"5","3":"NA","4":"NA","5":"NA","6":"NA","7":"Confirmed Progressive Disease (iCPD)","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0101-009","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-009","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)","6":"No","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-012","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-012","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-012","2":"3","3":"Partial Response (PR)","4":"Indeterminate","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-012","2":"4","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-013","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-013","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-013","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-014","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-014","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-014","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-015","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0101-015","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-002","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-002","2":"2","3":"Stable Disease (SD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-002","2":"3","3":"NA","4":"NA","5":"NA","6":"NA","7":"Stable Disease (iSD)","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Stable Disease (iSD)","10":"Yes"},{"1":"0102-002","2":"4","3":"NA","4":"NA","5":"NA","6":"NA","7":"Partial Response (iPR)","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Partial Response (iPR)","10":"Yes"},{"1":"0102-002","2":"5","3":"NA","4":"NA","5":"NA","6":"NA","7":"Stable Disease (iSD)","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Partial Response (iPR)","10":"Yes"},{"1":"0102-003","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"3","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"4","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"5","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"6","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"7","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-003","2":"8","3":"NA","4":"NA","5":"NA","6":"NA","7":"Indeterminate","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0102-003","2":"9","3":"NA","4":"NA","5":"NA","6":"NA","7":"Complete Response (iCR)","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Stable Disease (iSD)","10":"Yes"},{"1":"0102-003","2":"10","3":"NA","4":"NA","5":"NA","6":"NA","7":"Indeterminate","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0102-004","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"3","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"4","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"5","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"6","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"7","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"8","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"9","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0102-004","2":"10","3":"Complete Response (CR)","4":"Complete Response (CR)","5":"Complete Response (CR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-001","2":"1","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-001","2":"2","3":"NA","4":"NA","5":"NA","6":"NA","7":"Confirmed Progressive Disease (iCPD)","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0103-002","2":"1","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"2","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"3","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"4","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"5","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"6","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"7","3":"Stable Disease (SD)","4":"No non-target lesions at baseline","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"8","3":"Partial Response (PR)","4":"No non-target lesions at baseline","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-002","2":"9","3":"Progressive Disease (PD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)","6":"No","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-003","2":"1","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-003","2":"2","3":"NA","4":"NA","5":"NA","6":"NA","7":"Confirmed Progressive Disease (iCPD)","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0103-004","2":"1","3":"Stable Disease (SD)","4":"Complete Response (CR)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-004","2":"2","3":"Stable Disease (SD)","4":"Complete Response (CR)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-004","2":"3","3":"Stable Disease (SD)","4":"Complete Response (CR)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-004","2":"4","3":"Progressive Disease (PD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Progressive Disease (PD)","6":"No","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-004","2":"5","3":"NA","4":"NA","5":"NA","6":"NA","7":"Unconfirmed Progressive Disease (iUPD)","8":"Non-Complete Response/Non-Progressive Disease (Non-iCR/Non-iPD)","9":"Unconfirmed Progressive Disease (iUPD)","10":"Yes"},{"1":"0103-008","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-008","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-008","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0103-008","2":"4","3":"Indeterminate","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)","6":"No","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-002","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-002","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-002","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-003","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-003","2":"2","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-003","2":"3","3":"Progressive Disease (PD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)","6":"No","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-006","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0104-007","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0109-001","2":"1","3":"Stable Disease (SD)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Stable Disease (SD)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0109-001","2":"2","3":"Stable Disease (SD)","4":"Progressive Disease (PD)","5":"Progressive Disease (PD)","6":"Yes","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0109-001","2":"3","3":"NA","4":"NA","5":"NA","6":"NA","7":"Stable Disease (iSD)","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"Yes"},{"1":"0109-001","2":"4","3":"NA","4":"NA","5":"NA","6":"NA","7":"Confirmed Progressive Disease (iCPD)","8":"Confirmed Progressive Disease (iCPD)","9":"Confirmed Progressive Disease (iCPD)","10":"No"},{"1":"0109-004","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0109-004","2":"2","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0109-004","2":"3","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"},{"1":"0109-005","2":"1","3":"Partial Response (PR)","4":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","5":"Partial Response (PR)","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="final-analysis-dataset" class="section level1">
+<h1>Final analysis dataset</h1>
+<p>We construct the analysis dataset to assess the quality of the data
+from the tumour assessments and the overall response assessment using
+RECIST v.1.1:</p>
+<pre class="r"><code>data_05_or_recist &lt;- merge(
+    data_01_baseline_all,
+    data_02_postbaseline,
+    by = c(&quot;patient&quot;, &quot;event_num&quot;, &quot;evaluation_date&quot;,&quot;sum_of_lesions&quot;),
+    all = TRUE
+    ) %&gt;% 
+    # We create a new variable with the sum of lesion diameters at baseline to later calculate the change from baseline.
+    group_by(patient) %&gt;%
+    mutate(
+      baseline_sld = sum_of_lesions[event_num == 0]
+      ) %&gt;%
+    mutate(
+      change_from_baseline = sum_of_lesions - baseline_sld
+    ) %&gt;%
+    mutate(
+      percent_change_from_baseline = ((sum_of_lesions - baseline_sld) / baseline_sld) * 100
+    ) %&gt;% 
+    # For coding disease progression, RECIST sets the criterion of an increase of at least 20% with respect to the smallest sum of lesion diameters (nadir).
+    group_by(patient) %&gt;%
+    mutate(
+      nadir = ifelse(event_num == 0, sum_of_lesions, pmin(sum_of_lesions, lag(sum_of_lesions)))
+    ) %&gt;%
+    mutate(
+      change_from_nadir = sum_of_lesions - nadir
+    ) %&gt;%
+    mutate(
+      percent_change_from_nadir = ((sum_of_lesions - nadir) / nadir) * 100
+    )
+
+data_05_or_recist &lt;- merge(
+  data_05_or_recist,
+  data_03_new_lesions,
+  by = c(&quot;patient&quot;, &quot;event_num&quot;, &quot;evaluation_date&quot;),
+  all = TRUE
+) %&gt;% 
+  mutate(
+    new_lesions = if_else(
+      is.na(new_lesions), &quot;No&quot;, new_lesions
+    )
+  )
+
+data_05_or_recist &lt;- merge(
+  data_05_or_recist,
+  data_04a_recist,
+  by = c(&quot;patient&quot;, &quot;event_num&quot;),
+  all = TRUE
+) %&gt;%
+  filter(
+    !is.na(evaluation_date)
+    ) %&gt;% 
+  mutate(
+    overall_response = if_else(
+      overall_response == &quot;Progressive Disease (PD)&quot;, &quot;PD&quot;, overall_response),
+    overall_response = if_else(
+      overall_response == &quot;Complete Response (CR)&quot;, &quot;CR&quot;, overall_response),
+    overall_response = if_else(
+      overall_response == &quot;Partial Response (PR)&quot;, &quot;PR&quot;, overall_response),
+    overall_response = if_else(
+      overall_response == &quot;Stable Disease (SD)&quot;, &quot;SD&quot;, overall_response),
+    overall_response = if_else(
+      overall_response == &quot;Non-CR/Non-PD&quot;, &quot;Non-CR/Non-PD&quot;, overall_response),
+    PD = if_else(overall_response == &quot;PD&quot;, 1, 0),
+    CR = if_else(overall_response == &quot;CR&quot;, 1, 0),
+    PR = if_else(overall_response == &quot;PR&quot;, 1, 0),
+    SD = if_else(overall_response == &quot;SD&quot;, 1, 0),
+    NN = if_else(overall_response == &quot;Non-CR/Non-PD&quot;, 1, 0),
+    pd_this_ta = case_when(PD == 1 ~ event_num),
+    cr_this_ta = case_when(CR == 1 ~ event_num),
+    pr_this_ta = case_when(PR == 1 ~ event_num),
+    sd_this_ta = case_when(SD == 1 ~ event_num),
+    nn_this_ta = case_when(NN == 1 ~ event_num),
+    site = substr(patient, 1, 4)
+  )
+
+data_05_or_recist &lt;- merge(
+  data_00_patient_ids,
+  data_05_or_recist,
+  by = &quot;patient&quot;,
+  all = FALSE
+)
+
+# Quick fix
+# data_05_or_recist &lt;- data_05_or_recist[!(data_05_or_recist$patient == &#39;0103-008&#39; &amp; is.na(data_05_or_recist$sum_of_lesions)), ]
+data_05_or_recist &lt;- data_05_or_recist[!(data_05_or_recist$patient == &#39;0103-008&#39; &amp; is.na(data_05_or_recist$sum_of_lesions) &amp; data_05_or_recist$event_num != 4), ]
+
+write_xlsx(
+  data_05_or_recist,
+  here(&quot;output/LUPER_ORR_RECIST_2023-04-19.xlsx&quot;)
+)
+
+rmarkdown::paged_table(data_05_or_recist)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["patient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["event_num"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["evaluation_date"],"name":[3],"type":["date"],"align":["right"]},{"label":["sum_of_lesions"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["baseline_target"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["baseline_nontarget"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["baseline_sld"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["change_from_baseline"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["percent_change_from_baseline"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["nadir"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["change_from_nadir"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["percent_change_from_nadir"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["new_lesions"],"name":[13],"type":["chr"],"align":["left"]},{"label":["target_lesions_response"],"name":[14],"type":["chr"],"align":["left"]},{"label":["non_target_lesions_response"],"name":[15],"type":["chr"],"align":["left"]},{"label":["overall_response"],"name":[16],"type":["chr"],"align":["left"]},{"label":["PD"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["CR"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["PR"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["SD"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["NN"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["pd_this_ta"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["cr_this_ta"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["pr_this_ta"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["sd_this_ta"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["nn_this_ta"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["site"],"name":[27],"type":["chr"],"align":["left"]}],"data":[{"1":"0101-001","2":"0","3":"2020-10-17","4":"27.50","5":"0","6":"NA","7":"27.50","8":"0.00","9":"0.000000","10":"27.50","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"1"},{"1":"0101-001","2":"1","3":"2020-12-19","4":"NA","5":"NA","6":"NA","7":"27.50","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"No","14":"Indeterminate","15":"Complete Response (CR)","16":"Indeterminate","17":"0","18":"0","19":"0","20":"0","21":"0","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"2"},{"1":"0101-001","2":"2","3":"2021-01-16","4":"24.00","5":"NA","6":"NA","7":"27.50","8":"-3.50","9":"-12.727273","10":"NA","11":"NA","12":"NA","13":"Yes","14":"Progressive Disease (PD)","15":"Progressive Disease (PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"2","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"3"},{"1":"0101-001","2":"3","3":"2021-02-13","4":"52.00","5":"NA","6":"NA","7":"27.50","8":"24.50","9":"89.090909","10":"24.00","11":"28.00","12":"116.666667","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"4"},{"1":"0101-003","2":"0","3":"2021-01-23","4":"15.20","5":"0","6":"NA","7":"15.20","8":"0.00","9":"0.000000","10":"15.20","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"5"},{"1":"0101-003","2":"1","3":"2021-03-13","4":"12.00","5":"NA","6":"NA","7":"15.20","8":"-3.20","9":"-21.052632","10":"12.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0101","_rn_":"6"},{"1":"0101-003","2":"2","3":"2021-04-24","4":"7.00","5":"NA","6":"NA","7":"15.20","8":"-8.20","9":"-53.947368","10":"7.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0101","_rn_":"7"},{"1":"0101-003","2":"3","3":"2021-06-05","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0101","_rn_":"8"},{"1":"0101-003","2":"4","3":"2021-07-24","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"4","25":"NA","26":"NA","27":"0101","_rn_":"9"},{"1":"0101-003","2":"5","3":"2021-09-06","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"5","25":"NA","26":"NA","27":"0101","_rn_":"10"},{"1":"0101-003","2":"6","3":"2021-10-27","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"6","25":"NA","26":"NA","27":"0101","_rn_":"11"},{"1":"0101-003","2":"7","3":"2021-12-11","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"7","25":"NA","26":"NA","27":"0101","_rn_":"12"},{"1":"0101-003","2":"8","3":"2022-01-24","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"8","25":"NA","26":"NA","27":"0101","_rn_":"13"},{"1":"0101-003","2":"9","3":"2022-02-26","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"9","25":"NA","26":"NA","27":"0101","_rn_":"14"},{"1":"0101-003","2":"10","3":"2022-04-06","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"10","25":"NA","26":"NA","27":"0101","_rn_":"15"},{"1":"0101-003","2":"11","3":"2022-07-01","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"11","25":"NA","26":"NA","27":"0101","_rn_":"16"},{"1":"0101-003","2":"12","3":"2022-08-16","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"12","25":"NA","26":"NA","27":"0101","_rn_":"17"},{"1":"0101-003","2":"13","3":"2022-10-02","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"13","25":"NA","26":"NA","27":"0101","_rn_":"18"},{"1":"0101-003","2":"14","3":"2022-11-17","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"14","25":"NA","26":"NA","27":"0101","_rn_":"19"},{"1":"0101-003","2":"15","3":"2022-12-20","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"15","25":"NA","26":"NA","27":"0101","_rn_":"20"},{"1":"0101-003","2":"16","3":"2023-01-28","4":"5.00","5":"NA","6":"NA","7":"15.20","8":"-10.20","9":"-67.105263","10":"5.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"16","25":"NA","26":"NA","27":"0101","_rn_":"21"},{"1":"0101-004","2":"0","3":"2021-02-27","4":"18.50","5":"0","6":"NA","7":"18.50","8":"0.00","9":"0.000000","10":"18.50","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"22"},{"1":"0101-004","2":"1","3":"2021-04-17","4":"14.00","5":"NA","6":"NA","7":"18.50","8":"-4.50","9":"-24.324324","10":"14.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0101","_rn_":"23"},{"1":"0101-004","2":"2","3":"2021-05-29","4":"3.60","5":"NA","6":"NA","7":"18.50","8":"-14.90","9":"-80.540541","10":"3.60","11":"0.00","12":"0.000000","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"2","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"24"},{"1":"0101-004","2":"3","3":"2021-07-17","4":"2.80","5":"NA","6":"NA","7":"18.50","8":"-15.70","9":"-84.864865","10":"2.80","11":"0.00","12":"0.000000","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"3","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"25"},{"1":"0101-004","2":"4","3":"2021-08-24","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"4","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"26"},{"1":"0101-004","2":"5","3":"2021-10-19","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"5","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"27"},{"1":"0101-004","2":"6","3":"2021-11-21","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"6","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"28"},{"1":"0101-004","2":"7","3":"2022-01-08","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"7","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"29"},{"1":"0101-004","2":"8","3":"2022-02-18","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"8","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"30"},{"1":"0101-004","2":"9","3":"2022-03-21","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"9","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"31"},{"1":"0101-004","2":"10","3":"2022-05-10","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"Yes","14":"Complete Response (CR)","15":"No non-target lesions at baseline","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"10","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"32"},{"1":"0101-004","2":"11","3":"2022-06-16","4":"0.00","5":"NA","6":"NA","7":"18.50","8":"-18.50","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"33"},{"1":"0101-006","2":"0","3":"2021-07-31","4":"198.50","5":"0","6":"NA","7":"198.50","8":"0.00","9":"0.000000","10":"198.50","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"34"},{"1":"0101-008","2":"0","3":"2021-10-23","4":"40.30","5":"0","6":"NA","7":"40.30","8":"0.00","9":"0.000000","10":"40.30","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"35"},{"1":"0101-008","2":"1","3":"2021-12-11","4":"21.50","5":"NA","6":"NA","7":"40.30","8":"-18.80","9":"-46.650124","10":"21.50","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0101","_rn_":"36"},{"1":"0101-008","2":"2","3":"2022-02-05","4":"16.20","5":"NA","6":"NA","7":"40.30","8":"-24.10","9":"-59.801489","10":"16.20","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0101","_rn_":"37"},{"1":"0101-008","2":"3","3":"2022-03-15","4":"17.00","5":"NA","6":"NA","7":"40.30","8":"-23.30","9":"-57.816377","10":"16.20","11":"0.80","12":"4.938272","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0101","_rn_":"38"},{"1":"0101-008","2":"4","3":"2022-05-03","4":"31.00","5":"NA","6":"NA","7":"40.30","8":"-9.30","9":"-23.076923","10":"17.00","11":"14.00","12":"82.352941","13":"No","14":"Progressive Disease (PD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"4","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"39"},{"1":"0101-008","2":"5","3":"2022-06-14","4":"54.00","5":"NA","6":"NA","7":"40.30","8":"13.70","9":"33.995037","10":"31.00","11":"23.00","12":"74.193548","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"40"},{"1":"0101-009","2":"0","3":"2022-01-15","4":"78.90","5":"0","6":"NA","7":"78.90","8":"0.00","9":"0.000000","10":"78.90","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"41"},{"1":"0101-009","2":"1","3":"2022-03-12","4":"82.50","5":"NA","6":"NA","7":"78.90","8":"3.60","9":"4.562738","10":"78.90","11":"3.60","12":"4.562738","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0101","_rn_":"42"},{"1":"0101-009","2":"2","3":"2022-04-23","4":"89.50","5":"NA","6":"NA","7":"78.90","8":"10.60","9":"13.434728","10":"82.50","11":"7.00","12":"8.484848","13":"Yes","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"2","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"43"},{"1":"0101-012","2":"0","3":"2022-07-12","4":"52.20","5":"0","6":"NA","7":"52.20","8":"0.00","9":"0.000000","10":"52.20","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"44"},{"1":"0101-012","2":"1","3":"2022-09-17","4":"30.40","5":"NA","6":"NA","7":"52.20","8":"-21.80","9":"-41.762452","10":"30.40","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0101","_rn_":"45"},{"1":"0101-012","2":"2","3":"2022-10-29","4":"24.00","5":"NA","6":"NA","7":"52.20","8":"-28.20","9":"-54.022989","10":"24.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0101","_rn_":"46"},{"1":"0101-012","2":"3","3":"2022-12-10","4":"26.90","5":"NA","6":"NA","7":"52.20","8":"-25.30","9":"-48.467433","10":"24.00","11":"2.90","12":"12.083333","13":"No","14":"Partial Response (PR)","15":"Indeterminate","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0101","_rn_":"47"},{"1":"0101-012","2":"4","3":"2023-02-04","4":"22.90","5":"NA","6":"NA","7":"52.20","8":"-29.30","9":"-56.130268","10":"22.90","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"4","25":"NA","26":"NA","27":"0101","_rn_":"48"},{"1":"0101-013","2":"0","3":"2022-08-10","4":"82.50","5":"0","6":"NA","7":"82.50","8":"0.00","9":"0.000000","10":"82.50","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"49"},{"1":"0101-013","2":"1","3":"2022-09-22","4":"68.10","5":"NA","6":"NA","7":"82.50","8":"-14.40","9":"-17.454545","10":"68.10","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0101","_rn_":"50"},{"1":"0101-013","2":"2","3":"2022-11-10","4":"54.20","5":"NA","6":"NA","7":"82.50","8":"-28.30","9":"-34.303030","10":"54.20","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0101","_rn_":"51"},{"1":"0101-013","2":"3","3":"2022-12-19","4":"54.00","5":"NA","6":"NA","7":"82.50","8":"-28.50","9":"-34.545455","10":"54.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0101","_rn_":"52"},{"1":"0101-014","2":"0","3":"2022-08-27","4":"43.90","5":"0","6":"NA","7":"43.90","8":"0.00","9":"0.000000","10":"43.90","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"53"},{"1":"0101-014","2":"1","3":"2022-10-08","4":"15.70","5":"NA","6":"NA","7":"43.90","8":"-28.20","9":"-64.236902","10":"15.70","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0101","_rn_":"54"},{"1":"0101-014","2":"2","3":"2022-11-19","4":"13.10","5":"NA","6":"NA","7":"43.90","8":"-30.80","9":"-70.159453","10":"13.10","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0101","_rn_":"55"},{"1":"0101-014","2":"3","3":"2023-01-07","4":"12.00","5":"NA","6":"NA","7":"43.90","8":"-31.90","9":"-72.665148","10":"12.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0101","_rn_":"56"},{"1":"0101-015","2":"0","3":"2022-12-17","4":"108.70","5":"0","6":"NA","7":"108.70","8":"0.00","9":"0.000000","10":"108.70","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0101","_rn_":"57"},{"1":"0101-015","2":"1","3":"2023-02-04","4":"67.10","5":"NA","6":"NA","7":"108.70","8":"-41.60","9":"-38.270469","10":"67.10","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0101","_rn_":"58"},{"1":"0101-015","2":"2","3":"2023-03-11","4":"57.40","5":"NA","6":"NA","7":"108.70","8":"-51.30","9":"-47.194112","10":"57.40","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0101","_rn_":"59"},{"1":"0102-001","2":"0","3":"2020-09-16","4":"94.00","5":"0","6":"NA","7":"94.00","8":"0.00","9":"0.000000","10":"94.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"60"},{"1":"0102-002","2":"0","3":"2021-06-02","4":"79.00","5":"0","6":"NA","7":"79.00","8":"0.00","9":"0.000000","10":"79.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"61"},{"1":"0102-002","2":"1","3":"2021-07-16","4":"63.00","5":"NA","6":"NA","7":"79.00","8":"-16.00","9":"-20.253165","10":"63.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0102","_rn_":"62"},{"1":"0102-002","2":"2","3":"2021-08-31","4":"69.00","5":"NA","6":"NA","7":"79.00","8":"-10.00","9":"-12.658228","10":"63.00","11":"6.00","12":"9.523810","13":"No","14":"Stable Disease (SD)","15":"Progressive Disease (PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"2","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"63"},{"1":"0102-002","2":"3","3":"2021-10-14","4":"60.00","5":"NA","6":"NA","7":"79.00","8":"-19.00","9":"-24.050633","10":"60.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"64"},{"1":"0102-002","2":"4","3":"2021-12-02","4":"41.00","5":"NA","6":"NA","7":"79.00","8":"-38.00","9":"-48.101266","10":"41.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"65"},{"1":"0102-002","2":"5","3":"2022-01-07","4":"42.00","5":"NA","6":"NA","7":"79.00","8":"-37.00","9":"-46.835443","10":"41.00","11":"1.00","12":"2.439024","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"66"},{"1":"0102-003","2":"0","3":"2021-10-20","4":"15.00","5":"0","6":"NA","7":"15.00","8":"0.00","9":"0.000000","10":"15.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"67"},{"1":"0102-003","2":"1","3":"2021-11-30","4":"15.00","5":"NA","6":"NA","7":"15.00","8":"0.00","9":"0.000000","10":"15.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0102","_rn_":"68"},{"1":"0102-003","2":"2","3":"2022-01-14","4":"14.00","5":"NA","6":"NA","7":"15.00","8":"-1.00","9":"-6.666667","10":"14.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"2","26":"NA","27":"0102","_rn_":"69"},{"1":"0102-003","2":"3","3":"2022-03-09","4":"16.00","5":"NA","6":"NA","7":"15.00","8":"1.00","9":"6.666667","10":"14.00","11":"2.00","12":"14.285714","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"3","26":"NA","27":"0102","_rn_":"70"},{"1":"0102-003","2":"4","3":"2022-04-22","4":"17.00","5":"NA","6":"NA","7":"15.00","8":"2.00","9":"13.333333","10":"16.00","11":"1.00","12":"6.250000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"4","26":"NA","27":"0102","_rn_":"71"},{"1":"0102-003","2":"5","3":"2022-06-06","4":"18.00","5":"NA","6":"NA","7":"15.00","8":"3.00","9":"20.000000","10":"17.00","11":"1.00","12":"5.882353","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"5","26":"NA","27":"0102","_rn_":"72"},{"1":"0102-003","2":"6","3":"2022-07-18","4":"18.00","5":"NA","6":"NA","7":"15.00","8":"3.00","9":"20.000000","10":"18.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"6","26":"NA","27":"0102","_rn_":"73"},{"1":"0102-003","2":"7","3":"2022-08-26","4":"41.00","5":"NA","6":"NA","7":"15.00","8":"26.00","9":"173.333333","10":"18.00","11":"23.00","12":"127.777778","13":"No","14":"Progressive Disease (PD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"7","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"74"},{"1":"0102-003","2":"8","3":"2022-10-20","4":"0.00","5":"NA","6":"NA","7":"15.00","8":"-15.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"75"},{"1":"0102-003","2":"9","3":"2022-11-21","4":"0.00","5":"NA","6":"NA","7":"15.00","8":"-15.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"76"},{"1":"0102-003","2":"10","3":"2023-01-02","4":"0.00","5":"NA","6":"NA","7":"15.00","8":"-15.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"77"},{"1":"0102-004","2":"0","3":"2022-01-12","4":"50.00","5":"0","6":"NA","7":"50.00","8":"0.00","9":"0.000000","10":"50.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"78"},{"1":"0102-004","2":"1","3":"2022-02-23","4":"17.00","5":"NA","6":"NA","7":"50.00","8":"-33.00","9":"-66.000000","10":"17.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0102","_rn_":"79"},{"1":"0102-004","2":"2","3":"2022-04-06","4":"17.00","5":"NA","6":"NA","7":"50.00","8":"-33.00","9":"-66.000000","10":"17.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0102","_rn_":"80"},{"1":"0102-004","2":"3","3":"2022-06-07","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"3","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"81"},{"1":"0102-004","2":"4","3":"2022-07-20","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"4","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"82"},{"1":"0102-004","2":"5","3":"2022-08-31","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"5","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"83"},{"1":"0102-004","2":"6","3":"2022-10-10","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"6","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"84"},{"1":"0102-004","2":"7","3":"2022-11-23","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"7","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"85"},{"1":"0102-004","2":"8","3":"2022-12-27","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"8","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"86"},{"1":"0102-004","2":"9","3":"2023-02-01","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"9","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"87"},{"1":"0102-004","2":"10","3":"2023-03-15","4":"0.00","5":"NA","6":"NA","7":"50.00","8":"-50.00","9":"-100.000000","10":"0.00","11":"0.00","12":"NaN","13":"No","14":"Complete Response (CR)","15":"Complete Response (CR)","16":"CR","17":"0","18":"1","19":"0","20":"0","21":"0","22":"NA","23":"10","24":"NA","25":"NA","26":"NA","27":"0102","_rn_":"88"},{"1":"0103-001","2":"0","3":"2020-09-07","4":"61.20","5":"0","6":"NA","7":"61.20","8":"0.00","9":"0.000000","10":"61.20","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"89"},{"1":"0103-001","2":"1","3":"2020-11-04","4":"77.00","5":"NA","6":"NA","7":"61.20","8":"15.80","9":"25.816993","10":"61.20","11":"15.80","12":"25.816993","13":"No","14":"Progressive Disease (PD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"1","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"90"},{"1":"0103-001","2":"2","3":"2020-12-12","4":"85.00","5":"NA","6":"NA","7":"61.20","8":"23.80","9":"38.888889","10":"77.00","11":"8.00","12":"10.389610","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"91"},{"1":"0103-002","2":"0","3":"2020-10-07","4":"73.45","5":"0","6":"NA","7":"73.45","8":"0.00","9":"0.000000","10":"73.45","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"92"},{"1":"0103-002","2":"1","3":"2020-11-26","4":"74.76","5":"NA","6":"NA","7":"73.45","8":"1.31","9":"1.783526","10":"73.45","11":"1.31","12":"1.783526","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0103","_rn_":"93"},{"1":"0103-002","2":"2","3":"2021-01-04","4":"84.67","5":"NA","6":"NA","7":"73.45","8":"11.22","9":"15.275698","10":"74.76","11":"9.91","12":"13.255752","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"2","26":"NA","27":"0103","_rn_":"94"},{"1":"0103-002","2":"3","3":"2021-02-08","4":"84.17","5":"NA","6":"NA","7":"73.45","8":"10.72","9":"14.594963","10":"84.17","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"3","26":"NA","27":"0103","_rn_":"95"},{"1":"0103-002","2":"4","3":"2021-03-22","4":"76.23","5":"NA","6":"NA","7":"73.45","8":"2.78","9":"3.784888","10":"76.23","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"4","26":"NA","27":"0103","_rn_":"96"},{"1":"0103-002","2":"5","3":"2021-04-30","4":"67.81","5":"NA","6":"NA","7":"73.45","8":"-5.64","9":"-7.678693","10":"67.81","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"5","26":"NA","27":"0103","_rn_":"97"},{"1":"0103-002","2":"6","3":"2021-06-11","4":"61.87","5":"NA","6":"NA","7":"73.45","8":"-11.58","9":"-15.765827","10":"61.87","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"6","26":"NA","27":"0103","_rn_":"98"},{"1":"0103-002","2":"7","3":"2021-07-29","4":"56.53","5":"NA","6":"NA","7":"73.45","8":"-16.92","9":"-23.036079","10":"56.53","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"No non-target lesions at baseline","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"7","26":"NA","27":"0103","_rn_":"99"},{"1":"0103-002","2":"8","3":"2021-09-09","4":"65.08","5":"NA","6":"NA","7":"73.45","8":"-8.37","9":"-11.395507","10":"56.53","11":"8.55","12":"15.124713","13":"No","14":"Partial Response (PR)","15":"No non-target lesions at baseline","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"8","25":"NA","26":"NA","27":"0103","_rn_":"100"},{"1":"0103-002","2":"9","3":"2021-10-14","4":"93.58","5":"NA","6":"NA","7":"73.45","8":"20.13","9":"27.406399","10":"65.08","11":"28.50","12":"43.792256","13":"Yes","14":"Progressive Disease (PD)","15":"Progressive Disease (PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"9","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"101"},{"1":"0103-003","2":"0","3":"2021-02-03","4":"43.02","5":"0","6":"NA","7":"43.02","8":"0.00","9":"0.000000","10":"43.02","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"102"},{"1":"0103-003","2":"1","3":"2021-03-23","4":"69.00","5":"NA","6":"NA","7":"43.02","8":"25.98","9":"60.390516","10":"43.02","11":"25.98","12":"60.390516","13":"No","14":"Progressive Disease (PD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"1","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"103"},{"1":"0103-003","2":"2","3":"2021-04-21","4":"101.12","5":"NA","6":"NA","7":"43.02","8":"58.10","9":"135.053464","10":"69.00","11":"32.12","12":"46.550725","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"104"},{"1":"0103-004","2":"0","3":"2021-04-21","4":"35.49","5":"0","6":"NA","7":"35.49","8":"0.00","9":"0.000000","10":"35.49","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"105"},{"1":"0103-004","2":"1","3":"2021-05-28","4":"33.77","5":"NA","6":"NA","7":"35.49","8":"-1.72","9":"-4.846436","10":"33.77","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Complete Response (CR)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0103","_rn_":"106"},{"1":"0103-004","2":"2","3":"2021-07-07","4":"33.08","5":"NA","6":"NA","7":"35.49","8":"-2.41","9":"-6.790645","10":"33.08","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Complete Response (CR)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"2","26":"NA","27":"0103","_rn_":"107"},{"1":"0103-004","2":"2","3":"2021-07-12","4":"NA","5":"NA","6":"NA","7":"35.49","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"No","14":"Stable Disease (SD)","15":"Complete Response (CR)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"2","26":"NA","27":"0103","_rn_":"108"},{"1":"0103-004","2":"3","3":"2021-09-09","4":"NA","5":"NA","6":"NA","7":"35.49","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"No","14":"Stable Disease (SD)","15":"Complete Response (CR)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"3","26":"NA","27":"0103","_rn_":"109"},{"1":"0103-004","2":"3","3":"2021-08-25","4":"33.51","5":"NA","6":"NA","7":"35.49","8":"-1.98","9":"-5.579036","10":"NA","11":"NA","12":"NA","13":"No","14":"Stable Disease (SD)","15":"Complete Response (CR)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"3","26":"NA","27":"0103","_rn_":"110"},{"1":"0103-004","2":"4","3":"2021-11-18","4":"46.67","5":"NA","6":"NA","7":"35.49","8":"11.18","9":"31.501832","10":"NA","11":"NA","12":"NA","13":"No","14":"Progressive Disease (PD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"4","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"111"},{"1":"0103-004","2":"5","3":"2021-11-18","4":"46.67","5":"NA","6":"NA","7":"35.49","8":"11.18","9":"31.501832","10":"NA","11":"NA","12":"NA","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"112"},{"1":"0103-004","2":"5","3":"2021-11-16","4":"NA","5":"NA","6":"NA","7":"35.49","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"113"},{"1":"0103-006","2":"0","3":"2021-05-26","4":"40.09","5":"0","6":"NA","7":"40.09","8":"0.00","9":"0.000000","10":"40.09","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"114"},{"1":"0103-008","2":"0","3":"2022-02-03","4":"199.00","5":"0","6":"NA","7":"199.00","8":"0.00","9":"0.000000","10":"199.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"115"},{"1":"0103-008","2":"1","3":"2022-03-31","4":"208.95","5":"NA","6":"NA","7":"199.00","8":"9.95","9":"5.000000","10":"199.00","11":"9.95","12":"5.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0103","_rn_":"117"},{"1":"0103-008","2":"2","3":"2022-05-11","4":"176.69","5":"NA","6":"NA","7":"199.00","8":"-22.31","9":"-11.211055","10":"NA","11":"NA","12":"NA","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"2","26":"NA","27":"0103","_rn_":"118"},{"1":"0103-008","2":"3","3":"2022-07-01","4":"129.50","5":"NA","6":"NA","7":"199.00","8":"-69.50","9":"-34.924623","10":"NA","11":"NA","12":"NA","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0103","_rn_":"121"},{"1":"0103-008","2":"4","3":"2022-07-27","4":"NA","5":"NA","6":"NA","7":"199.00","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"No","14":"Indeterminate","15":"Progressive Disease (PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"4","23":"NA","24":"NA","25":"NA","26":"NA","27":"0103","_rn_":"122"},{"1":"0104-002","2":"0","3":"2022-11-02","4":"110.00","5":"0","6":"NA","7":"110.00","8":"0.00","9":"0.000000","10":"110.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0104","_rn_":"123"},{"1":"0104-002","2":"1","3":"2022-12-14","4":"45.00","5":"NA","6":"NA","7":"110.00","8":"-65.00","9":"-59.090909","10":"45.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0104","_rn_":"124"},{"1":"0104-002","2":"2","3":"2023-02-01","4":"28.00","5":"NA","6":"NA","7":"110.00","8":"-82.00","9":"-74.545455","10":"28.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0104","_rn_":"125"},{"1":"0104-002","2":"3","3":"2023-03-17","4":"28.00","5":"NA","6":"NA","7":"110.00","8":"-82.00","9":"-74.545455","10":"28.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0104","_rn_":"126"},{"1":"0104-003","2":"0","3":"2022-10-28","4":"17.00","5":"0","6":"NA","7":"17.00","8":"0.00","9":"0.000000","10":"17.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0104","_rn_":"127"},{"1":"0104-003","2":"1","3":"2022-12-12","4":"14.00","5":"NA","6":"NA","7":"17.00","8":"-3.00","9":"-17.647059","10":"14.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0104","_rn_":"128"},{"1":"0104-003","2":"2","3":"2023-01-23","4":"14.00","5":"NA","6":"NA","7":"17.00","8":"-3.00","9":"-17.647059","10":"14.00","11":"0.00","12":"0.000000","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"2","26":"NA","27":"0104","_rn_":"129"},{"1":"0104-003","2":"3","3":"2023-03-03","4":"21.00","5":"NA","6":"NA","7":"17.00","8":"4.00","9":"23.529412","10":"14.00","11":"7.00","12":"50.000000","13":"Yes","14":"Progressive Disease (PD)","15":"Progressive Disease (PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"3","23":"NA","24":"NA","25":"NA","26":"NA","27":"0104","_rn_":"130"},{"1":"0104-004","2":"0","3":"2022-12-21","4":"155.00","5":"0","6":"NA","7":"155.00","8":"0.00","9":"0.000000","10":"155.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0104","_rn_":"131"},{"1":"0104-006","2":"0","3":"2023-01-31","4":"57.00","5":"0","6":"NA","7":"57.00","8":"0.00","9":"0.000000","10":"57.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0104","_rn_":"132"},{"1":"0104-006","2":"1","3":"2023-03-17","4":"30.00","5":"NA","6":"NA","7":"57.00","8":"-27.00","9":"-47.368421","10":"30.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0104","_rn_":"133"},{"1":"0104-007","2":"0","3":"2023-02-14","4":"59.00","5":"0","6":"NA","7":"59.00","8":"0.00","9":"0.000000","10":"59.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0104","_rn_":"134"},{"1":"0104-007","2":"1","3":"2023-03-31","4":"66.00","5":"NA","6":"NA","7":"59.00","8":"7.00","9":"11.864407","10":"59.00","11":"7.00","12":"11.864407","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0104","_rn_":"135"},{"1":"0109-001","2":"0","3":"2022-07-28","4":"54.00","5":"0","6":"NA","7":"54.00","8":"0.00","9":"0.000000","10":"54.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0109","_rn_":"136"},{"1":"0109-001","2":"1","3":"2022-09-08","4":"58.00","5":"NA","6":"NA","7":"54.00","8":"4.00","9":"7.407407","10":"54.00","11":"4.00","12":"7.407407","13":"No","14":"Stable Disease (SD)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"SD","17":"0","18":"0","19":"0","20":"1","21":"0","22":"NA","23":"NA","24":"NA","25":"1","26":"NA","27":"0109","_rn_":"137"},{"1":"0109-001","2":"2","3":"2022-10-24","4":"55.00","5":"NA","6":"NA","7":"54.00","8":"1.00","9":"1.851852","10":"55.00","11":"0.00","12":"0.000000","13":"Yes","14":"Stable Disease (SD)","15":"Progressive Disease (PD)","16":"PD","17":"1","18":"0","19":"0","20":"0","21":"0","22":"2","23":"NA","24":"NA","25":"NA","26":"NA","27":"0109","_rn_":"138"},{"1":"0109-001","2":"3","3":"2022-12-02","4":"55.00","5":"NA","6":"NA","7":"54.00","8":"1.00","9":"1.851852","10":"55.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0109","_rn_":"139"},{"1":"0109-001","2":"4","3":"2023-01-26","4":"72.00","5":"NA","6":"NA","7":"54.00","8":"18.00","9":"33.333333","10":"55.00","11":"17.00","12":"30.909091","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0109","_rn_":"140"},{"1":"0109-004","2":"0","3":"2022-10-26","4":"83.00","5":"0","6":"NA","7":"83.00","8":"0.00","9":"0.000000","10":"83.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0109","_rn_":"141"},{"1":"0109-004","2":"1","3":"2022-12-15","4":"26.00","5":"NA","6":"NA","7":"83.00","8":"-57.00","9":"-68.674699","10":"26.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0109","_rn_":"142"},{"1":"0109-004","2":"2","3":"2023-01-26","4":"16.00","5":"NA","6":"NA","7":"83.00","8":"-67.00","9":"-80.722892","10":"16.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"2","25":"NA","26":"NA","27":"0109","_rn_":"143"},{"1":"0109-004","2":"3","3":"2023-03-08","4":"19.00","5":"NA","6":"NA","7":"83.00","8":"-64.00","9":"-77.108434","10":"16.00","11":"3.00","12":"18.750000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"3","25":"NA","26":"NA","27":"0109","_rn_":"144"},{"1":"0109-005","2":"0","3":"2023-01-25","4":"55.00","5":"0","6":"NA","7":"55.00","8":"0.00","9":"0.000000","10":"55.00","11":"0.00","12":"0.000000","13":"No","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"0109","_rn_":"145"},{"1":"0109-005","2":"1","3":"2023-03-10","4":"33.00","5":"NA","6":"NA","7":"55.00","8":"-22.00","9":"-40.000000","10":"33.00","11":"0.00","12":"0.000000","13":"No","14":"Partial Response (PR)","15":"Non-Complete Response/Non-Progressive Disease (Non-CR/Non-PD)","16":"PR","17":"0","18":"0","19":"1","20":"0","21":"0","22":"NA","23":"NA","24":"1","25":"NA","26":"NA","27":"0109","_rn_":"146"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="tumour-assessment-visualization" class="section level1">
+<h1>Tumour assessment visualization</h1>
+<p>Finally, we generated for each site a graphical representation of the
+tumour assessments of each patient with their overall response coded
+according to RECIST v.1.1, as well as the percentage change in the sum
+of lesion diameters with respect to baseline:</p>
+<pre class="r"><code>cols &lt;- c(
+  &quot;CR&quot; = &quot;#153D99&quot;,
+  &quot;PR&quot; = &quot;#74AAFF&quot;,
+  &quot;SD&quot; = &quot;#FFD966&quot;,
+  &quot;Non-CR/Non-PD&quot; = &quot;#9ACEB7&quot;,
+  &quot;PD&quot; = &quot;#B24745&quot;
+)
+
+shape_override &lt;- c(23, 19, 15, 15, 4)
+stroke_override &lt;- c(1, 1, 1,  .9, 1)
+size_override &lt;-  c(2, 2, 2, 2, 2)
+
+swimmer_spider_plot &lt;- function(site, comment, name) {
+  swimmer_ta &lt;- data_05_or_recist %&gt;%
+  filter(
+    site == {{site}}
+  ) %&gt;% 
+  ggplot(
+    aes(y = patient, group = patient)) +
+  theme_bw() + 
+  theme(
+    panel.grid.minor.x = element_blank(),
+    panel.border = element_blank()
+  ) +
+  # 1 data layer: line plot showing number of TAs
+  geom_line(aes(x = event_num), size = 1.5) +
+  # 2 data layer: dot plot showing whether each patient had measurable disease at baseline
+  geom_point(aes(x = baseline_target,
+                 col = &quot;Measurable disease&quot;),
+             size = 3.5,
+             stroke = 0.75,
+             shape = 13) +
+  # 3 data layer: dot plot showing whether each patient had only non-measurable disease at baseline 
+  geom_point(aes(x = baseline_nontarget,
+                 col = &quot;Non-measurable disease&quot;),
+             size = 3.5,
+             stroke = 0.75,
+             shape = 1) +
+  # 4 data layer: dot plot showing TAs with an OR = SD
+  geom_point(aes(x = sd_this_ta,
+                 col = &quot;SD&quot;),
+             stroke = 2,
+             shape = 15) +
+  # 5 data layer: dot plot showing TAs with an OR = PR
+  geom_point(aes(x = pr_this_ta,
+                 col = &quot;PR&quot;),
+             size = 2,
+             stroke = 1.5,
+             shape = 19,
+             fill = &quot;#74AAFF&quot;) +
+  # 6 data layer: dot plot showing TAs with an OR = CR
+  geom_point(aes(x = cr_this_ta,
+                 col = &quot;CR&quot;),
+             size = 2,
+             stroke = 1.5,
+             shape = 23,
+             fill = &quot;#153D99&quot;) +
+  # 7 data layer: dot plot showing TAs with an OR = PD
+  geom_point(aes(x = pd_this_ta,
+                 col = &quot;PD&quot;),
+             size = 2,
+             stroke = 1.5,
+             shape = 4) +
+  # 8 data layer: dot plot showing TAs with an OR = Non-CR/Non-PD
+  geom_point(aes(x = nn_this_ta,
+                 col = &quot;Non-CR/Non-PD&quot;),
+             stroke = 2,
+             shape = 15) +
+  # Final aesthetics adjustments
+  scale_color_manual(values = cols,
+                     limits = c(&#39;CR&#39;, &#39;PR&#39;, &#39;SD&#39;, &#39;Non-CR/Non-PD&#39;, &#39;PD&#39;),
+                     name = &quot;Overall Response&quot;) +
+  scale_x_continuous(breaks = seq(1, 16, 1)) +
+  guides(color = guide_legend(
+    override.aes = list(
+      shape = shape_override,
+      stroke = stroke_override,
+      size = size_override
+    )
+  )) +
+  labs(
+    x = &quot;Tumor assessment&quot;,
+    y = &quot;Patient&quot;
+  )
+
+  ggsave(
+    paste(&quot;output/swimmer-spider-plot/materials/LUPER_site-&quot;, as.character({{site}}), &quot;_swimmer_TAs_2023-04-19.png&quot;, sep = &quot;&quot;),
+    swimmer_ta,
+    width = 24,
+    height = 120,
+    units = &quot;cm&quot;,
+    dpi = 300
+    )
+  
+  spider_ta &lt;- data_05_or_recist %&gt;% 
+  filter(
+    site == {{site}}
+    ) %&gt;%
+  ggplot(
+  aes(x = event_num, y = percent_change_from_baseline)
+  ) + 
+  # Line plot showing SDL percent change from baseline
+  geom_line(aes(color = patient), size = 1.2) +
+  scale_color_manual(values = c(
+    rep(&quot;#000000&quot;, 200))
+  ) +
+  # Second data layer: dot plot showing TAs with an OR = SD
+  geom_point(aes(x = sd_this_ta,
+                 col = &quot;SD&quot;),
+             stroke = 1.5,
+             shape = 22,
+             colour = &quot;#FFD966&quot;,
+             fill = &quot;#FFD966&quot;) +
+  # Third data layer: dot plot showing TAs with an OR = PR
+  geom_point(aes(x = pr_this_ta,
+                 col = &quot;PR&quot;),
+             size = 2,
+             stroke = 1.5,
+             shape = 21,
+             colour = &quot;#74AAFF&quot;,
+             fill = &quot;#74AAFF&quot;) +
+  # Fourth data layer: dot plot showing TAs with an OR = CR
+  geom_point(aes(x = cr_this_ta,
+                 col = &quot;CR&quot;),
+             size = 2,
+             stroke = 1.5,
+             shape = 23,
+             colour = &quot;#153D99&quot;,
+             fill = &quot;#153D99&quot;) +
+  # Fifth data layer: dot plot showing TAs with an OR = PD
+  geom_point(aes(x = pd_this_ta,
+                 col = &quot;PD&quot;),
+             size = 2,
+             stroke = 1.5,
+             shape = 4,
+             colour = &quot;#B24745&quot;) +
+  # Final aesthetics adjustments
+  scale_fill_manual(values = cols,
+                    name = &quot;Overall Response&quot;) +
+  theme_minimal() +
+  theme(
+    panel.border = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.background = element_rect(fill = &quot;#FFFFFF&quot;, colour = &quot;#FFFFFF&quot;),
+    plot.background  = element_rect(fill = &quot;#FFFFFF&quot;, colour = &quot;#FFFFFF&quot;),
+    legend.title = element_text(size = 5),
+    legend.text = element_text(size = 5),
+    legend.justification = &quot;top&quot;,
+    legend.position = c(0.95, 0.95),
+    legend.direction = &quot;vertical&quot;
+  ) +
+  labs(
+    x = &quot;Tumor assessment&quot;,
+    y = &quot;Change in sum of lesions from baseline (%)&quot;,
+    shape = &quot;Overall response&quot;
+  ) +
+  guides(size = &quot;none&quot;,
+         color = &quot;none&quot;
+  ) +
+  scale_x_continuous(breaks = seq(1, 9, 1)) +
+  scale_y_continuous(breaks = seq(-100, 100 , 20))
+
+  spider_ta &lt;- spider_ta + scale_shape(na.translate = FALSE)
+  
+  ggsave(
+    paste(&quot;output/swimmer-spider-plot/materials/LUPER_site-&quot;, as.character({{site}}), &quot;_spider_TAs_2023-04-19.png&quot;, sep = &quot;&quot;),
+    spider_ta,
+    width = 30,
+    height = 12,
+    units = &quot;cm&quot;,
+    dpi = 300
+    )
+
+  spider_ta &lt;- spider_ta +
+    annotate(&quot;rect&quot;, xmin = 0, xmax = 9, ymin = -30, ymax = -100,
+             alpha = .1,fill = &quot;#74AAFF&quot;) +
+    annotate(&quot;rect&quot;, xmin = 0, xmax = 9, ymin = 20, ymax = 100,
+             alpha = .0, fill = &quot;#B24745&quot;)
+  
+  combined_ta &lt;- plot_grid(
+  swimmer_ta,
+  spider_ta,
+  nrow = 1,
+  rel_heights = c(1, 1)
+  )
+
+  title &lt;- ggdraw() + 
+    draw_label({{name}},
+      fontface = &#39;bold&#39;,
+      x = 0,
+      hjust = 0
+    ) +
+    theme(
+      plot.margin = margin(0, 0, 0, 7)
+    )
+  
+  combined_ta &lt;- plot_grid(
+    title, combined_ta,
+    ncol = 1,
+    rel_heights = c(0.1, 1)
+  )
+  
+  combined_ta &lt;- add_sub(
+    combined_ta, &quot;   Reason for study treatment discontinuation:&quot;,
+    x = 0, hjust = 0,
+    fontface = &#39;bold&#39;,
+    size = 8
+  )
+    
+  combined_ta &lt;- add_sub(
+    combined_ta, {{comment}},
+    x = 0, hjust = 0,
+    fontface = &#39;plain&#39;,
+    size = 8
+  )
+  
+  ggsave(
+    paste(&quot;output/swimmer-spider-plot/LUPER_site-&quot;, as.character({{site}}), &quot;_TAs_2023-04-19.png&quot;, sep = &quot;&quot;),
+    combined_ta,
+    width = 30,
+    height = 15,
+    units = &quot;cm&quot;,
+    dpi = 300
+    )
+}</code></pre>
+<pre class="r"><code>site_0101_name &lt;- &quot;Site 0101 - Hospital Universitario Gregorio Marañón&quot;
+
+comment_site_0101 &lt;- &quot;   Patient 0101-001 had new lesions in the hiliar and lower paratrachealhiliar lymph nodes.\n   Patient 0101-003 is responding after 30 cycles of study treatment.\n   Patient 0101-004 only had a measurable lesion in the axillary lymph node at baseline and responded until the appearance of new lesions in the hilar lung lymph nodes.\n   Patient 0101-006 died (disease progression) before a post-baseline tumour assessment was performed.\n   Patient 0101-008 had a 91.4% increase in sum of lesion diameters from nadir that was confirmed 4 weeks later (iCPD) by iRECIST.\n   Patient 0101-009 had new lesions in the brain and lung.\n   Patient 0101-012 is responding after 9 cycles of study treatment.\n   Patient 0101-013 is responding after 9 cycles of study treatment.\n   Patient 0101-014 is responding after 9 cycles of study treatment.\n   Patient 0101-015 is responding after 4 cycles of study treatment.&quot;
+
+swimmer_spider_plot(&quot;0101&quot;, comment_site_0101, site_0101_name)</code></pre>
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+<pre><code>Warning: Removed 49 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 59 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 30 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 51 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 59 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 30 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 51 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 49 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 59 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 30 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 51 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 59 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 30 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 51 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 55 rows containing missing values (`geom_point()`).</code></pre>
+<pre class="r"><code>site_0102_name &lt;- &quot;Site 0102 - Hospital Universitario Sanchinarro-START-CIOCC&quot;
+
+comment_site_0102 &lt;- &quot;   Patient 0102-001 died (COVID-19) before a post-baseline tumour assessment was performed.\n   Patient 0102-002 experiencied a pseudoprogression at TA #2 due to unequivocal progression of non-target lesions in the liver that was later evaluated as iSD (TA #3) and iPR (TAs #4 &amp; #5) by iRECIST.\n   Patient 0102-003 had a suspected disease progression at TA #7 but the confirmation TA 4 weeks later was indeterminate. Later on, TA #9 shows iSD and TA #10 shows iCPD by iRECIST.\n   Patient 0102-004 is responding after 21 cycles of study treatment.&quot;
+
+swimmer_spider_plot(&quot;0102&quot;, comment_site_0102, site_0102_name)</code></pre>
+<pre><code>Warning: Removed 25 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 22 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 21 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 22 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 21 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 25 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 22 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 21 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 22 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 21 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre class="r"><code>site_0103_name &lt;- &quot;Site 0103 - Hospital Fundación Jiménez Díaz-START Madrid&quot;
+
+comment_site_0103 &lt;- &quot;   Patient 0103-001 had a 25.8% increase in sum of lesion diameters from nadir that was confirmed 4 weeks later (iCPD) by iRECIST.\n   Patient 0103-002 had new lesions at the subcarinal lymph nodes. The overall response at TA #8 is recorded as PR despite a 15.1% increase in sum of lesion diameters from nadir.\n   Patient 0103-003 had a 60.4% increase in sum of lesion diameters from nadir that was confirmed 4 weeks later (iCPD) by iRECIST.\n   Patient 0103-004 had a 46.7% increase in sum of lesion diameters from nadir that has not been confirmed 4 weeks later as per iRECIST (TA #5 shows iUPD at the same evaluation date of TA #4).\n   Patient 0103-006 died (disease progression) before a post-baseline tumour assessment was performed.\n   Patient 0103-008 was stable until unequivocal progression of non-target lesions in the brain.&quot;
+
+swimmer_spider_plot(&quot;0103&quot;, comment_site_0103, site_0103_name)</code></pre>
+<pre><code>Warning: Removed 25 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 17 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 26 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 19 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 25 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 17 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 26 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 2 rows containing missing values (`geom_line()`).</code></pre>
+<pre><code>Warning: Removed 19 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 29 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 31 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 27 rows containing missing values (`geom_point()`).</code></pre>
+<pre class="r"><code>site_0104_name &lt;- &quot;Site 0104 - Hospital Universitari Vall D&#39;Hebron&quot;
+
+comment_site_0104 &lt;- &quot;   Patient 0104-002 is responding after 7 cycles of study treatment.\n   Patient 0104-003 had new lesions in the brain.\n   Patient 0104-004 died (pseudomonal sepsis) before a post-baseline tumour assessment was performed.\n   Patient 0104-006 is responding after 3 cycles of study treatment.\n   Patient 0104-007 is stable after 2 cycles of study treatment.&quot;
+
+swimmer_spider_plot(&quot;0104&quot;, comment_site_0104, site_0104_name)</code></pre>
+<pre><code>Warning: Removed 8 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 9 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 12 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 9 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 12 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 8 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 9 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 12 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 9 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 13 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 12 rows containing missing values (`geom_point()`).</code></pre>
+<pre class="r"><code>site_0109_name &lt;- &quot;Site 0109 - Institut Català d&#39; Oncologia L&#39;Hospitalet (ICO)&quot;
+
+comment_site_0109 &lt;- &quot;   Patient 0109-001 had a new lesion in the liver.\n   Patient 0109-004 is responding after 7 cycles of study treatment.\n   Patient 0109-005 is responding after 2 cycles of study treatment.&quot;
+
+swimmer_spider_plot(&quot;0109&quot;, comment_site_0109, site_0109_name)</code></pre>
+<pre><code>Warning: Removed 8 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 7 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 7 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 8 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 7 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 7 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 11 rows containing missing values (`geom_point()`).</code></pre>
+<pre><code>Warning: Removed 10 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div id="statistical-analysis-of-the-primary-endpoint"
+class="section level1">
+<h1>Statistical analysis of the primary endpoint</h1>
+<p>We’re testing a new treatment on 30 patients to see if it works.
+We’ll either see 10% or fewer patients respond (null hypothesis) or 30%
+or more respond (alternative hypothesis).</p>
+<p>We’ll use a standardized test assuming the null hypothesis is true,
+with a type I error rate of 0.025 and a type II error rate of around 0.1
+(0.866), giving us 90% statistical power.</p>
+<p>If at least 7 patients respond to the treatment, we’ll reject the
+null hypothesis and conclude that the treatment works better than
+chance.</p>
+</div>
+<div id="overall-response-rate" class="section level1">
+<h1>Overall Response Rate</h1>
+<pre class="r"><code>library(&quot;survival&quot;)
+library(&quot;survminer&quot;)</code></pre>
+<pre><code>Loading required package: ggpubr</code></pre>
+<pre><code>
+Attaching package: &#39;ggpubr&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:cowplot&#39;:
+
+    get_legend</code></pre>
+<pre><code>
+Attaching package: &#39;survminer&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:survival&#39;:
+
+    myeloma</code></pre>
+<pre class="r"><code>library(&quot;survMisc&quot;)</code></pre>
+<pre><code>
+Attaching package: &#39;survMisc&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:ggplot2&#39;:
+
+    autoplot</code></pre>
+<pre class="r"><code>library(&quot;ggprism&quot;)
+
+### Load data -----------------------------------------------------------------
+data_06_orr &lt;- read_excel(
+  here(&quot;output/LUPER_waterfall_ORR_RECIST_2023-04-19.xlsx&quot;)
+)
+
+### Filter by dise level group ------------------------------------------------
+data06a_orr_dl1 &lt;- data_06_orr %&gt;%
+  filter(
+    Cohort == &quot;Dose level 1&quot;
+  )
+
+data06b_orr_dl2 &lt;- data_06_orr %&gt;%
+  filter(
+    Cohort == &quot;Dose level 2&quot;
+  )
+
+### Plot ----------------------------------------------------------------------
+waterfallplot_orr &lt;- ggplot(
+  data_06_orr,
+  aes(
+    x = Order,
+    y = SLD_CfB,
+    colour = factor(Colour)
+    )
+  ) +
+  coord_cartesian(
+    ylim = c(-100, 40)
+    ) +
+  scale_y_continuous(
+    breaks = seq(-100, 40, by = 20
+                 )
+    ) +
+  geom_bar(
+    fill = data_06_orr$Colour,
+    colour = &quot;#060606&quot;,
+    stat = &quot;identity&quot;,
+    width = 0.99
+    ) +
+  geom_abline(slope = 0, intercept = -30, col = &quot;gray40&quot;, lty = 2) +
+  theme_prism() +
+  labs(title = &quot;&quot;,
+       x = &quot;Patients&quot;,
+       y = &quot;Change in Sum of Longest Diameter from Baseline (%)&quot;) +
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+    )
+
+### Save plot -----------------------------------------------------------------
+ggsave(
+  here(&quot;output/LUPER_ORR_waterfall_2023-04-19.png&quot;),
+  waterfallplot_orr,
+  width = 24,
+  height = 16,
+  units = &quot;cm&quot;,
+  dpi = 300
+  )
+
+### Show plot -----------------------------------------------------------------
+waterfallplot_orr</code></pre>
+<p><img src="figure/WP1_QA_tumor-assessments_2023-04-19.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.3 (2022-03-10)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur/Monterey 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] ggprism_1.0.3   survMisc_0.5.6  survminer_0.4.9 ggpubr_0.4.0   
+ [5] survival_3.5-0  cowplot_1.1.1   here_1.0.1      lubridate_1.8.0
+ [9] janitor_2.1.0   writexl_1.4.0   readxl_1.4.0    forcats_0.5.1  
+[13] stringr_1.4.0   dplyr_1.0.9     purrr_0.3.4     readr_2.1.2    
+[17] tidyr_1.2.0     tibble_3.1.7    ggplot2_3.4.0   tidyverse_1.3.1
+[21] workflowr_1.7.0
+
+loaded via a namespace (and not attached):
+ [1] colorspace_2.0-3  ggsignif_0.6.3    ellipsis_0.3.2    class_7.3-20     
+ [5] rprojroot_2.0.3   snakecase_0.11.0  fs_1.5.2          gld_2.6.4        
+ [9] rstudioapi_0.13   proxy_0.4-26      farver_2.1.0      fansi_1.0.3      
+[13] mvtnorm_1.1-3     xml2_1.3.3        splines_4.1.3     rootSolve_1.8.2.3
+[17] knitr_1.38        jsonlite_1.8.0    km.ci_0.5-6       broom_1.0.2      
+[21] dbplyr_2.1.1      compiler_4.1.3    httr_1.4.3        backports_1.4.1  
+[25] assertthat_0.2.1  Matrix_1.4-0      fastmap_1.1.0     cli_3.6.0        
+[29] later_1.3.0       htmltools_0.5.2   tools_4.1.3       gtable_0.3.0     
+[33] glue_1.6.2        lmom_2.8          Rcpp_1.0.8.3      carData_3.0-5    
+[37] cellranger_1.1.0  jquerylib_0.1.4   vctrs_0.5.1       xfun_0.30        
+[41] ps_1.7.0          rvest_1.0.2       lifecycle_1.0.3   rstatix_0.7.0    
+[45] zoo_1.8-10        getPass_0.2-2     MASS_7.3-55       scales_1.2.0     
+[49] ragg_1.2.5        hms_1.1.1         promises_1.2.0.1  expm_0.999-6     
+[53] yaml_2.3.5        Exact_3.1         gridExtra_2.3     KMsurv_0.1-5     
+[57] sass_0.4.1        stringi_1.7.6     highr_0.9         e1071_1.7-9      
+[61] boot_1.3-28       rlang_1.0.6       pkgconfig_2.0.3   systemfonts_1.0.4
+[65] evaluate_0.15     lattice_0.20-45   labeling_0.4.2    processx_3.5.3   
+[69] tidyselect_1.1.2  magrittr_2.0.3    R6_2.5.1          DescTools_0.99.44
+[73] generics_0.1.2    DBI_1.1.2         pillar_1.7.0      haven_2.5.0      
+[77] whisker_0.4       withr_2.5.0       abind_1.4-5       modelr_0.1.8     
+[81] crayon_1.5.1      car_3.0-12        utf8_1.2.2        tzdb_0.3.0       
+[85] rmarkdown_2.14    grid_4.1.3        data.table_1.14.8 callr_3.7.0      
+[89] git2r_0.31.0      reprex_2.0.1      digest_0.6.29     xtable_1.8-4     
+[93] httpuv_1.6.5      textshaping_0.3.6 munsell_0.5.0     bslib_0.3.1      </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
